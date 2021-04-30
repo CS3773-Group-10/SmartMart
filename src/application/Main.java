@@ -12,7 +12,7 @@ import java.sql.SQLException;
 
 public class Main extends Application {
 
-    public static Connection conn;
+    public static Connection conn; // connection to database
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -23,19 +23,20 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
-        // connect to database
         try {
+            // connect to database
             conn = DriverManager.getConnection("jdbc:sqlite:smartmart.db");
 
-            launch(args); // start javafx application
+            // start javafx application
+            launch(args);
+
         } catch (SQLException e) {
             System.err.println(e.getMessage());
         }
-        finally {
+        finally { // close db connection
             try {
                 if (conn != null) { // close conn if it exists
                     conn.close();
-                    System.out.println("Closed connection successfully.");
                 }
             }
             catch (SQLException e) {
