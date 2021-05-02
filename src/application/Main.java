@@ -6,9 +6,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.sql.*;
 
 public class Main extends Application {
 
@@ -26,6 +26,22 @@ public class Main extends Application {
         try {
             // connect to database
             conn = DriverManager.getConnection("jdbc:sqlite:smartmart.db");
+
+            // if database is empty, initialize with default data
+            Statement statement = conn.createStatement();
+            ResultSet rs = statement.executeQuery("select count(*) from sqlite_sequence");
+
+            if (rs.getInt("count(*)") == 0) { // empty
+                // run the main_person.sql script to initialize the data
+                File sqlFile = new File(".\\src\\application\\sql_scripts\\customers.sql");
+                SQLRunner runner = new SQLRunner();
+                try {
+                    runner.runScript(conn, sqlFile);
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+            }
+
 
             // start javafx application
             launch(args);
