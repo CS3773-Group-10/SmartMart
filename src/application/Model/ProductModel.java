@@ -1,7 +1,13 @@
 package application.Model;
 
-public class ProductModel {
+import application.Main;
 
+import java.sql.*;
+
+public class ProductModel {
+    Connection conn = Main.conn;
+    private Statement statement = null;
+    private ResultSet resultSet = null;
 
     /**
      * getInventory()
@@ -9,15 +15,28 @@ public class ProductModel {
      *
      * @return  list of product IDs for all products in the database
      */
-    public int[] getInventory() {
+    public int[] getInventory() throws SQLException {
         // TODO: get product list
+        statement = conn.createStatement();
 
-        return new int[0];
+        // create array size of inventory
+        resultSet = statement.executeQuery("SELECT count(*) FROM customers");
+        int invSize = resultSet.getInt("count");
+        int[] inventoryList = new int[invSize];
+
+        // fill list with ids
+        resultSet = statement.executeQuery("SELECT id FROM customers");
+        int i = 0;
+        while (resultSet.next()) {
+            inventoryList[i] = resultSet.getInt("id");
+            i++;
+        }
+        return inventoryList;
     }
 
-    // TODO: set product quantity
-
     // TODO: get list of categories
+
+    // TODO: set product quantity
 
     // TODO: get product name by id
 

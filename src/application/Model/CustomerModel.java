@@ -6,7 +6,6 @@ import java.sql.*;
 
 public class CustomerModel {
     Connection conn = Main.conn;
-    private Statement statement = null;
     private PreparedStatement preparedStatement = null;
     private ResultSet resultSet = null;
 
