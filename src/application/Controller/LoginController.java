@@ -6,8 +6,6 @@ import javafx.fxml.FXML;
 
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
@@ -52,7 +50,6 @@ public class LoginController implements Initializable {
         signinImageView.setImage(loginImage);
     }
 
-
     public void loginButtonOnAction(ActionEvent event) throws SQLException {
         String emailInput = usernameTextField.getText();
         String passInput = enterPasswordField.getText();
@@ -63,7 +60,7 @@ public class LoginController implements Initializable {
             // verify
             CustomerModel cm = new CustomerModel();
             if(cm.verifyCustomer(emailInput, passInput)) {
-                // TODO: SWITCH SCREENS (WITH USER ID?)
+                // TODO: SWITCH SCREENS WITH USER ID
                 int id = cm.getUserId(emailInput);
                 loginMessageLabel.setText("Login successful! id=" + id);
             }
