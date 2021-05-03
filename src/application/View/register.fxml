@@ -9,7 +9,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="360.0" style="-fx-background-color: eff9f1;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller.RegisterController">
    <children>
       <ImageView fx:id="registerImage" fitHeight="150.0" fitWidth="200.0" layoutX="36.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true">
@@ -47,11 +46,12 @@
       <TextField fx:id="emailTextField" layoutX="55.0" layoutY="320.0" prefHeight="25.0" prefWidth="245.0" promptText="Email" />
       <PasswordField fx:id="passwordField" layoutX="55.0" layoutY="380.0" prefWidth="245.0" promptText="Password" />
       <PasswordField fx:id="comfirmPasswordField" layoutX="55.0" layoutY="440.0" prefWidth="245.0" promptText="Comfirm Password" />
-      <Button fx:id="registerButton" layoutX="60.0" layoutY="504.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="240.0" style="-fx-background-color: e84648;" text="Register" textFill="WHITE">
+      <Button fx:id="registerButton" layoutX="60.0" layoutY="504.0" mnemonicParsing="false" onAction="#register" prefHeight="45.0" prefWidth="240.0" style="-fx-background-color: e84648;" text="Register" textFill="WHITE">
          <font>
             <Font size="15.0" />
          </font>
       </Button>
       <Button fx:id="backtoLoginButton" layoutX="96.0" layoutY="552.0" mnemonicParsing="false" onAction="#goBack" style="-fx-background-color: eff9f1; -fx-text-fill: e94649; -fx-effect: null;" text="already have an account?" />
+      <Label fx:id="registerMessageLabel" alignment="CENTER" layoutX="155.0" layoutY="477.0" prefHeight="18.0" prefWidth="46.0" textAlignment="CENTER" textFill="RED" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
    </children>
 </AnchorPane>
