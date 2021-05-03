@@ -17,8 +17,9 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("View/login.fxml"));
-        primaryStage.setTitle("SmartMart :)");
-        primaryStage.setScene(new Scene(root, 300, 275));
+        primaryStage.setTitle("SmartMart Application :)");
+        primaryStage.setScene(new Scene(root, 360, 640));
+        primaryStage.setResizable(false);
         primaryStage.show();
     }
 
