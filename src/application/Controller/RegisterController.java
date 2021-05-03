@@ -1,6 +1,7 @@
 package application.Controller;
 
 import application.Main;
+import application.Model.CustomerModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,6 +22,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ResourceBundle;
 
@@ -47,6 +49,8 @@ public class RegisterController implements Initializable {
     @FXML
     private Button registerButton;
 
+    @FXML
+    private Label registerMessageLabel;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle){
@@ -57,16 +61,23 @@ public class RegisterController implements Initializable {
     }
 
     @FXML
-    void register(ActionEvent event) {
+    void register(ActionEvent event) throws SQLException {
 
         String firstName = firstNameTextField.getText();
         String lastName = lastNameTextField.getText();
         String email = emailTextField.getText();
         String password = passwordField.getText();
+        String comfirmPassword = comfirmPasswordField.getText();
 
         // if passwords match, add customer using Customer Model
 
         // TODO: verify password and confirm password is same
+        CustomerModel cm = new CustomerModel();
+        if(password.equals(comfirmPassword)){
+            cm.addCustomer(firstName, lastName, email, password);
+        } else{
+            registerMessageLabel.setText("Password doesn't match. Please, try again.");
+        }
 
     }
 
