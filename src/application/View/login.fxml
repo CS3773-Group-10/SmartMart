@@ -10,17 +10,16 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="360.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller.LoginController">
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="150.0" fitWidth="240.0" layoutX="60.0" layoutY="69.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="logoImageView" fitHeight="150.0" fitWidth="240.0" layoutX="60.0" layoutY="69.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../images/logo.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="150.0" fitWidth="120.0" layoutX="42.0" layoutY="236.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="signinImageView" fitHeight="150.0" fitWidth="120.0" layoutX="42.0" layoutY="236.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../images/login.png" />
                </image>
@@ -42,7 +41,7 @@
                   <Font size="15.0" />
                </font>
             </Button>
-            <Label layoutX="99.0" layoutY="447.0" text="Login invalid. Please, try again." textFill="RED" />
+            <Label fx:id="loginMessageLabel" layoutX="99.0" layoutY="447.0" textFill="RED" />
          </children>
       </AnchorPane>
    </center>
