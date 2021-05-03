@@ -29,7 +29,6 @@ public class Main extends Application {
 
             // if database is empty, initialize with default data
             Statement statement = conn.createStatement();
-
             ResultSet rs = statement.executeQuery("select count(*) from sqlite_master");
 
             if (rs.getInt("count(*)") == 0) { // empty
@@ -46,9 +45,7 @@ public class Main extends Application {
                         }
                     }
                 }
-
             }
-
 
             // start javafx application
             launch(args);
