@@ -59,6 +59,13 @@ public class RegisterController implements Initializable {
     @FXML
     void register(ActionEvent event) {
 
+        String firstName = firstNameTextField.getText();
+        String lastName = lastNameTextField.getText();
+        String email = emailTextField.getText();
+        String password = passwordField.getText();
+
+        // if passwords match, add customer using Customer Model
+
         // TODO: verify password and confirm password is same
 
     }
