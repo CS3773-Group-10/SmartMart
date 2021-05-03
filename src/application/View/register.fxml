@@ -10,44 +10,44 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="360.0" style="-fx-background-color: eff9f1;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="360.0" style="-fx-background-color: eff9f1;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller.RegisterController">
    <children>
-      <Label layoutX="50.0" layoutY="192.0" style="-fx-text-fill: e94649;" text="Name">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Label>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="28.0" layoutY="74.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="registerImage" fitHeight="150.0" fitWidth="200.0" layoutX="36.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../images/register.png" />
          </image>
       </ImageView>
-      <Label layoutX="50.0" layoutY="247.0" style="-fx-text-fill: e94649;" text="Last Name">
+      <Label layoutX="55.0" layoutY="180.0" style="-fx-text-fill: e94649;" text="First Name">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label layoutX="50.0" layoutY="298.0" style="-fx-text-fill: e94649;" text="Email">
+      <Label layoutX="55.0" layoutY="240.0" style="-fx-text-fill: e94649;" text="Last Name">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label layoutX="50.0" layoutY="353.0" style="-fx-text-fill: e94649;" text="Password">
+      <Label layoutX="55.0" layoutY="300.0" style="-fx-text-fill: e94649;" text="Email">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label layoutX="50.0" layoutY="410.0" style="-fx-text-fill: e94649;" text="Comfirm Password">
+      <Label layoutX="55.0" layoutY="360.0" style="-fx-text-fill: e94649;" text="Password">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <TextField layoutX="50.0" layoutY="213.0" prefHeight="25.0" prefWidth="245.0" promptText="Name" />
-      <TextField layoutX="50.0" layoutY="270.0" prefHeight="25.0" prefWidth="245.0" promptText="Last Name" />
-      <TextField layoutX="50.0" layoutY="320.0" prefHeight="25.0" prefWidth="245.0" promptText="Email" />
-      <PasswordField layoutX="50.0" layoutY="374.0" prefWidth="245.0" promptText="Password" />
-      <PasswordField layoutX="50.0" layoutY="431.0" prefWidth="245.0" promptText="Password" />
-      <Button layoutX="60.0" layoutY="504.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="240.0" style="-fx-background-color: e84648;" text="Register">
+      <Label layoutX="55.0" layoutY="420.0" style="-fx-text-fill: e94649;" text="Comfirm Password">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="firstNameTextField" layoutX="55.0" layoutY="200.0" prefHeight="25.0" prefWidth="245.0" promptText="First Name" />
+      <TextField fx:id="lastNameTextField" layoutX="55.0" layoutY="260.0" prefHeight="25.0" prefWidth="245.0" promptText="Last Name" />
+      <TextField fx:id="emailTextField" layoutX="55.0" layoutY="320.0" prefHeight="25.0" prefWidth="245.0" promptText="Email" />
+      <PasswordField fx:id="passwordField" layoutX="55.0" layoutY="380.0" prefWidth="245.0" promptText="Password" />
+      <PasswordField fx:id="comfirmPasswordField" layoutX="55.0" layoutY="440.0" prefWidth="245.0" promptText="Comfirm Password" />
+      <Button fx:id="registerButton" layoutX="60.0" layoutY="504.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="240.0" style="-fx-background-color: e84648;" text="Register" textFill="WHITE">
          <font>
             <Font size="15.0" />
          </font>
