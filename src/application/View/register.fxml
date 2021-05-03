@@ -52,5 +52,6 @@
             <Font size="15.0" />
          </font>
       </Button>
+      <Button fx:id="backtoLoginButton" layoutX="96.0" layoutY="552.0" mnemonicParsing="false" onAction="#goBack" style="-fx-background-color: eff9f1; -fx-text-fill: e94649; -fx-effect: null;" text="already have an account?" />
    </children>
 </AnchorPane>
