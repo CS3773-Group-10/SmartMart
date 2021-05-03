@@ -29,17 +29,24 @@ public class Main extends Application {
 
             // if database is empty, initialize with default data
             Statement statement = conn.createStatement();
+
             ResultSet rs = statement.executeQuery("select count(*) from sqlite_master");
 
             if (rs.getInt("count(*)") == 0) { // empty
-                // run the main_person.sql script to initialize the data
-                File sqlFile = new File(".\\src\\application\\sql_scripts\\customers.sql");
+                // run each script in sql_script folder to initialize the data
+                File folder = new File(".\\src\\application\\sql_scripts");
+                File[] listOfFiles = folder.listFiles();
                 SQLRunner runner = new SQLRunner();
-                try {
-                    runner.runScript(conn, sqlFile);
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
+                for (File file : listOfFiles) {
+                    if (file.isFile()) {
+                        try {
+                            runner.runScript(conn, file);
+                        } catch (FileNotFoundException e) {
+                            e.printStackTrace();
+                        }
+                    }
                 }
+
             }
 
 
