@@ -36,12 +36,12 @@
                </font>
             </Label>
             <PasswordField fx:id="enterPasswordField" layoutX="57.0" layoutY="409.0" prefWidth="245.0" promptText="Password" />
-            <Button fx:id="loginButton" layoutX="60.0" layoutY="473.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="240.0" style="-fx-background-color: e84648;" text="Sign In" textFill="WHITE">
+            <Button fx:id="loginButton" layoutX="60.0" layoutY="473.0" mnemonicParsing="false" onAction="#loginButtonOnAction" prefHeight="45.0" prefWidth="240.0" style="-fx-background-color: e84648;" text="Sign In" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>
             </Button>
-            <Label fx:id="loginMessageLabel" layoutX="99.0" layoutY="447.0" textFill="RED" />
+            <Label fx:id="loginMessageLabel" alignment="CENTER" layoutX="135.0" layoutY="441.0" prefHeight="18.0" prefWidth="46.0" textAlignment="CENTER" textFill="RED" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
          </children>
       </AnchorPane>
    </center>

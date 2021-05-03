@@ -27,11 +27,11 @@ public class LoginController implements Initializable {
     @FXML
     private ImageView signinImageView;
 
-    /*@FXML
+    @FXML
     private TextField usernameTextField;
 
     @FXML
-    private TextField enterPasswordField;*/
+    private TextField enterPasswordField;
 
 
 
@@ -48,11 +48,15 @@ public class LoginController implements Initializable {
 
     public void loginButtonOnAction(ActionEvent event){
 
-        //if(usernameTextField.getText().isBlank() == false && enterPasswordField.getText().isBlank() == false){
+        if(usernameTextField.getText().isBlank() == false && enterPasswordField.getText().isBlank() == false){
             loginMessageLabel.setText("You try to login");
-        //}else{
-         //   loginMessageLabel.setText("Please enter your Username and Password");
-       // }
+        }else{
+            loginMessageLabel.setText("Please enter your Username and Password");
+        }
+    }
+
+    public void validateLogin(){
+        
     }
 
 }

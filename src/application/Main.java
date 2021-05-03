@@ -13,6 +13,7 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("View/login.fxml"));
         primaryStage.setTitle("SmartMart Application :)");
         primaryStage.setScene(new Scene(root, 360, 640));
+        primaryStage.setResizable(false);
         primaryStage.show();
     }
 
