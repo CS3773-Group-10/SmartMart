@@ -59,7 +59,7 @@ public class Main extends Application {
                 if (conn != null) { // close conn if it exists
                     conn.close();
                 }
-            } //change this 
+            }
             catch (SQLException e) {
                 System.err.println((e.getMessage()));
             }

@@ -67,11 +67,28 @@ public class LoginController implements Initializable {
             if(cm.verifyCustomer(emailInput, passInput)) {
                 // TODO: SWITCH SCREENS WITH USER ID
                 int id = cm.getUserId(emailInput);
-                loginMessageLabel.setText("Login successful! id=" + id);
+                //loginMessageLabel.setText("Login successful! id=" + id);
+                try {
+                    goToCategoryList(event, id);
+                }
+                catch (IOException e) {
+                    //something
+                }
             }
             else loginMessageLabel.setText("Login attempt failed.");
         }
     }
+
+    @FXML
+    private void goToCategoryList(ActionEvent event, int id) throws IOException {
+        AnchorPane mainPane = FXMLLoader.load(Main.class.getResource("View/categoryList.fxml"));
+        Scene scene = new Scene(mainPane, 360, 640);
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(scene);
+        window.setResizable(false);
+        window.show();
+    }
+
     public void registerButtonOnAction(ActionEvent event) throws IOException {
         AnchorPane mainPane = FXMLLoader.load(Main.class.getResource("View/register.fxml"));
         Scene scene = new Scene(mainPane, 360, 640);
