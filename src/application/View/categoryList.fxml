@@ -13,32 +13,32 @@
       </ImageView>
       <ImageView fx:id="fruitImageView" fitHeight="109.0" fitWidth="120.0" layoutX="46.0" layoutY="154.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../images/fruitsLabel.png" />
+            <Image url="@../../../images/fruitsIcon.png" />
          </image>
       </ImageView>
       <ImageView fx:id="veggiesImageView" fitHeight="109.0" fitWidth="120.0" layoutX="191.0" layoutY="154.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../images/veggiesLabel.png" />
+            <Image url="@../../../images/veggiesIcon.png" />
          </image>
       </ImageView>
       <ImageView fx:id="dairyImageView" fitHeight="109.0" fitWidth="120.0" layoutX="46.0" layoutY="282.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../images/dairyLabel.png" />
+            <Image url="@../../../images/dairyIcon.png" />
          </image>
       </ImageView>
       <ImageView fx:id="meatsImageView" fitHeight="109.0" fitWidth="120.0" layoutX="191.0" layoutY="282.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../images/meatsLabel.png" />
+            <Image url="@../../../images/meatsIcon.png" />
          </image>
       </ImageView>
       <ImageView fx:id="snacksImageView" fitHeight="109.0" fitWidth="120.0" layoutX="46.0" layoutY="405.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../images/snacksLabel.png" />
+            <Image url="@../../../images/snacksIcon.png" />
          </image>
       </ImageView>
       <ImageView fx:id="grainsImageView" fitHeight="109.0" fitWidth="120.0" layoutX="191.0" layoutY="405.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../images/grainsLabel.png" />
+            <Image url="@../../../images/grainsIcon.png" />
          </image>
       </ImageView>
    </children>

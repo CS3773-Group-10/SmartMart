@@ -52,27 +52,27 @@ public class CategoryListController implements Initializable {
         Image browseImage = new Image(browseFile.toURI().toString());
         browseImageView.setImage(browseImage);
 
-        File fruitsFile = new File( "images/fruitsLabel.png");
+        File fruitsFile = new File( "images/fruitsIcon.png");
         Image fruitImage = new Image(fruitsFile.toURI().toString());
         fruitImageView.setImage(fruitImage);
 
-        File veggiesFile = new File( "images/veggiesLabel.png");
+        File veggiesFile = new File( "images/veggiesIcon.png");
         Image veggiesImage = new Image(veggiesFile.toURI().toString());
         veggiesImageView.setImage(veggiesImage);
 
-        File dairyFile = new File( "images/dairyLabel.png");
+        File dairyFile = new File( "images/dairyIcon.png");
         Image dairyImage = new Image(dairyFile.toURI().toString());
         dairyImageView.setImage(dairyImage);
 
-        File grainsFile = new File( "images/grainsLabel.png");
+        File grainsFile = new File( "images/grainsIcon.png");
         Image grainsImage = new Image(grainsFile.toURI().toString());
         grainsImageView.setImage(grainsImage);
 
-        File meatsFile = new File( "images/meatsLabel.png");
+        File meatsFile = new File( "images/meatsIcon.png");
         Image meatsImage = new Image(meatsFile.toURI().toString());
         meatsImageView.setImage(meatsImage);
 
-        File snacksFile = new File( "images/snacksLabel.png");
+        File snacksFile = new File( "images/snacksIcon.png");
         Image snacksImage = new Image(snacksFile.toURI().toString());
         snacksImageView.setImage(snacksImage);
         //userLabel.setText("User id is: " + userId);
