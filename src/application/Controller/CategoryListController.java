@@ -40,11 +40,10 @@ public class CategoryListController implements Initializable {
     @FXML
     private ImageView dairyImageView;
 
-    /*public int userId;
+    @FXML
+    private Label userLabel;
 
-    public CategoryListController(int id) {
-        this.userId = id;
-    }*/
+    private int userId;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle){
@@ -75,6 +74,11 @@ public class CategoryListController implements Initializable {
         File snacksFile = new File( "images/snacksLabel.png");
         Image snacksImage = new Image(snacksFile.toURI().toString());
         snacksImageView.setImage(snacksImage);
-        //userLabel.setText("User id is: " + userId);
+    }
+
+    //display the user Id on screen
+    public void setUserId(int id) {
+        this.userId = id;
+        userLabel.setText("User id is: " + userId);
     }
 }
