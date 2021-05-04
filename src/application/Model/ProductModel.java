@@ -17,7 +17,6 @@ public class ProductModel {
      * @return  list of product IDs for all products in the database
      */
     public int[] getInventory() throws SQLException {
-        // TODO: get product list
         statement = conn.createStatement();
 
         // create array size of inventory
@@ -45,7 +44,6 @@ public class ProductModel {
      * @throws SQLException
      */
     public int[] getListByCategory(String category) throws SQLException {
-        // TODO: get category list
         // create array of approperiate size
         preparedStatement = conn.prepareStatement(
             "SELECT count(*) FROM products"+
@@ -69,8 +67,15 @@ public class ProductModel {
     }
 
 
+    /**
+     * setQuantity(id, qty)
+     * sets the quantity of the product at given id to the given quantity
+     *
+     * @param id    id of the product to update
+     * @param qty   quantity to update to
+     * @throws SQLException
+     */
     public void setQuantity(int id, int qty) throws SQLException {
-        // TODO: set product quantity
         preparedStatement = conn.prepareStatement(
             "UPDATE products"+
                 "SET quantity=?"+
@@ -81,8 +86,15 @@ public class ProductModel {
     }
 
 
+    /**
+     * getName(id)
+     * gets the name of the product at the provided id
+     *
+     * @param id    the id of the product to query
+     * @return      the name of the product as a string
+     * @throws SQLException
+     */
     public String getName(int id) throws SQLException {
-        // TODO: get product name by id
         preparedStatement = conn.prepareStatement(
             "SELECT name FROM products"+
                 " WHERE id=?");
@@ -93,6 +105,7 @@ public class ProductModel {
         }
         else return null;
     }
+
 
     // TODO: get product description by id
 
