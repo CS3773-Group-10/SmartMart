@@ -91,7 +91,8 @@ public class ProductModel {
      * gets the name of the product at the provided id
      *
      * @param id    the id of the product to query
-     * @return      the name of the product as a string
+     * @return      the name of the product as a string,
+     *              returns null if query fails
      * @throws SQLException
      */
     public String getName(int id) throws SQLException {
@@ -107,13 +108,90 @@ public class ProductModel {
     }
 
 
-    // TODO: get product description by id
+    /**
+     * getDescription(id)
+     * gets the desctiption of the product at the provided id
+     *
+     * @param id    the id of the product to query
+     * @return      the description of the product as a string,
+     *              returns null if query fails
+     * @throws SQLException
+     */
+    public String getDescription(int id) throws SQLException {
+        preparedStatement = conn.prepareStatement(
+            "SELECT description FROM products"+
+                " WHERE id=?");
+        preparedStatement.setInt(1, id);
+        resultSet = preparedStatement.executeQuery();
+        if (resultSet.next()) {
+            return resultSet.getString("description");
+        }
+        else return null;
+    }
 
-    // TODO: get product category
 
-    // TODO: get product quantity in stock
+    /**
+     * getCategory(id)
+     * gets the category of the product at the provided id
+     *
+     * @param id    the id of the product to query
+     * @return      the category of the product as a string,
+     *              returns null if query fails
+     * @throws SQLException
+     */
+    public String getCategory(int id) throws SQLException {
+        preparedStatement = conn.prepareStatement(
+            "SELECT category FROM products"+
+                " WHERE id=?");
+        preparedStatement.setInt(1, id);
+        resultSet = preparedStatement.executeQuery();
+        if (resultSet.next()) {
+            return resultSet.getString("category");
+        }
+        else return null;
+    }
 
-    // TODO: get product sell by
+    /**
+     * getQuantity(id)
+     * gets the quantity of the product at the provided id
+     *
+     * @param id    the id of the product to query
+     * @return      the quantity of the product as an int,
+     *              returns -1 if query fails
+     * @throws SQLException
+     */
+    public int getQuantity(int id) throws SQLException {
+        preparedStatement = conn.prepareStatement(
+            "SELECT quantity FROM products"+
+                " WHERE id=?");
+        preparedStatement.setInt(1, id);
+        resultSet = preparedStatement.executeQuery();
+        if (resultSet.next()) {
+            return resultSet.getInt("quantity");
+        }
+        else return -1;
+    }
+
+    /**
+     * getSellBy(id)
+     * gets the sell by date of the product at the provided id
+     *
+     * @param id    the id of the product to query
+     * @return      the sell by date of the product as type Date,
+     *              returns null if query fails
+     * @throws SQLException
+     */
+    public Date getSellyBy(int id) throws SQLException {
+        preparedStatement = conn.prepareStatement(
+            "SELECT sellBy FROM products"+
+                " WHERE id=?");
+        preparedStatement.setInt(1, id);
+        resultSet = preparedStatement.executeQuery();
+        if (resultSet.next()) {
+            return resultSet.getDate("sellBy");
+        }
+        else return null;
+    }
 
     // TODO: get product image -- we should add a folder of product images with the file name "product-"+ id +".png"
 
