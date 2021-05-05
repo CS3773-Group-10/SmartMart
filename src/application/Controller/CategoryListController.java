@@ -48,17 +48,13 @@ public class CategoryListController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle){
-        File browseFile = new File( "images/browse.png");
+        File browseFile = new File( "images/browseTextLabel.png");
         Image browseImage = new Image(browseFile.toURI().toString());
         browseImageView.setImage(browseImage);
 
         File fruitsFile = new File( "images/fruitsIcon.png");
         Image fruitImage = new Image(fruitsFile.toURI().toString());
         fruitImageView.setImage(fruitImage);
-
-        File veggiesFile = new File( "images/veggiesIcon.png");
-        Image veggiesImage = new Image(veggiesFile.toURI().toString());
-        veggiesImageView.setImage(veggiesImage);
 
         File dairyFile = new File( "images/dairyIcon.png");
         Image dairyImage = new Image(dairyFile.toURI().toString());
@@ -77,4 +73,15 @@ public class CategoryListController implements Initializable {
         snacksImageView.setImage(snacksImage);
         //userLabel.setText("User id is: " + userId);
     }
+
+    @FXML
+    private void goToProductList(ActionEvent event) throws IOException {
+        AnchorPane mainPane = FXMLLoader.load(Main.class.getResource("View/productList.fxml"));
+        Scene scene = new Scene(mainPane, 360, 640);
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(scene);
+        window.setResizable(false);
+        window.show();
+    }
+
 }

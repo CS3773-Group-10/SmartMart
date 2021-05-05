@@ -1,7 +1,9 @@
 package application.Model;
 
 import application.Main;
+import javafx.scene.image.Image;
 
+import java.io.File;
 import java.sql.*;
 
 public class ProductModel {
@@ -12,23 +14,32 @@ public class ProductModel {
 
     /**
      * getInventory()
-     * Gets the entire inventory of products as an array of all product IDs
+     * Gets the entire inventory of products as an array of Product objects
      *
-     * @return  list of product IDs for all products in the database
+     * @return  list of all products in the database
      */
-    public int[] getInventory() throws SQLException {
+    public Product[] getInventory() throws SQLException {
         statement = conn.createStatement();
 
         // create array size of inventory
         resultSet = statement.executeQuery("SELECT count(*) FROM products");
         int invSize = resultSet.getInt("count");
-        int[] inventoryList = new int[invSize];
+        Product[] inventoryList = new Product[invSize];
 
         // fill list with ids
-        resultSet = statement.executeQuery("SELECT id FROM products");
+        resultSet = statement.executeQuery("SELECT " +
+                "(id, name, description, category, quantity, sellBy) FROM products");
         int i = 0;
         while (resultSet.next()) {
-            inventoryList[i] = resultSet.getInt("id");
+            Product product = new Product(resultSet.getInt("id"),
+                    resultSet.getString("name"),
+                    resultSet.getString("description"),
+                    resultSet.getString("category"),
+                    resultSet.getInt("quantity"),
+                    resultSet.getDate("sellBy"),
+                    getImage(resultSet.getInt("id")
+            ));
+            inventoryList[i] = product;
             i++;
         }
         return inventoryList;
@@ -43,25 +54,33 @@ public class ProductModel {
      * @return
      * @throws SQLException
      */
-    public int[] getListByCategory(String category) throws SQLException {
-        // create array of approperiate size
+    public Product[] getListByCategory(String category) throws SQLException {
+        // create array of appropriate size
         preparedStatement = conn.prepareStatement(
             "SELECT count(*) FROM products"+
                 " WHERE category=?");
         preparedStatement.setString(1, category);
         resultSet = preparedStatement.executeQuery();
         int catSize = resultSet.getInt("count");
-        int[] categoryList = new int[catSize];
+        Product[] categoryList = new Product[catSize];
 
         // fill list with ids
         preparedStatement = conn.prepareStatement(
-            "SELECT id FROM products"+
-                " WHERE category=?");
+            "SELECT (id, name, description, category, quantity, sellBy) FROM products " +
+                    "WHERE category=?");
         preparedStatement.setString(1, category);
         resultSet = preparedStatement.executeQuery();
         int i = 0;
         while (resultSet.next()) {
-            categoryList[i] = resultSet.getInt("id");
+            Product product = new Product(resultSet.getInt("id"),
+                    resultSet.getString("name"),
+                    resultSet.getString("description"),
+                    resultSet.getString("category"),
+                    resultSet.getInt("quantity"),
+                    resultSet.getDate("sellBy"),
+                    getImage(resultSet.getInt("id")
+            ));
+            categoryList[i] = product;
         }
         return categoryList;
     }
@@ -181,7 +200,7 @@ public class ProductModel {
      *              returns null if query fails
      * @throws SQLException
      */
-    public Date getSellyBy(int id) throws SQLException {
+    public Date getSellBy(int id) throws SQLException {
         preparedStatement = conn.prepareStatement(
             "SELECT sellBy FROM products"+
                 " WHERE id=?");
@@ -193,6 +212,19 @@ public class ProductModel {
         else return null;
     }
 
-    // TODO: get product image -- we should add a folder of product images with the file name "product-"+ id +".png"
+    /**
+     * getImage(id)
+     * gets the display image of the product at the provided id
+     *
+     * @param id    the id of the product to query
+     * @return      the image icon of the product as a javafx Image object,
+     *              returns null if query fails
+     */
+    public Image getImage(int id) throws SQLException {
+        String imagePath = String.format("images/product-images/product-%d.png", id);
+        File file = new File(imagePath);
+        Image image = new Image(file.toURI().toString());
+        return(image);
+    }
 
 }
