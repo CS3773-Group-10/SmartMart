@@ -37,7 +37,6 @@ public class ProductListController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resources) {
         String path = String.format("images/%sTextLabel.png", category.toLowerCase());
-        System.out.println(path + "\n");
         File headerFile = new File(path);
         Image headerImage = new Image(headerFile.toURI().toString());
         header = new ImageView(headerImage);
