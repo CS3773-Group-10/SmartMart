@@ -117,5 +117,27 @@ public class ProductListController implements Initializable {
         window.show();
     }
 
+    public void goToAccount(MouseEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+
+        //content root is set to src, this may not work if content root set to something else
+        loader.setLocation(getClass().getResource("/application/View/account.fxml"));
+        loader.load();
+
+        //get the controller that the fxml is linked to and update the userId
+        AccountController controller = loader.getController();
+        try {
+            controller.setUserId(userId);
+            AnchorPane p = (AnchorPane) loader.getRoot();
+            Scene scene = new Scene(p, 360, 640);
+            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            window.setScene(scene);
+            window.setResizable(false);
+            window.show();
+        }
+        catch (Exception e) {
+            //exception
+        }
+    }
 
 }

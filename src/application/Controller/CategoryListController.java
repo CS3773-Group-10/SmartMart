@@ -13,7 +13,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import javafx.scene.control.Label;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -35,7 +34,6 @@ public class CategoryListController implements Initializable {
     @FXML private ImageView orderImageView;
     @FXML private ImageView accountImageView;
     @FXML private ImageView logoImageView;
-    @FXML private Label userLabel;
 
     private int userId;
 
@@ -90,10 +88,9 @@ public class CategoryListController implements Initializable {
         logoImageView.setImage(logoImage);
     }
 
-    //display the user Id on screen
+    //record the userId
     public void setUserId(int id) {
         this.userId = id;
-        userLabel.setText("User id is: " + userId);
     }
 
     @FXML

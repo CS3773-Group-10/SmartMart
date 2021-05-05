@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -8,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane prefHeight="640.0" prefWidth="360.0" style="-fx-background-color: eff9f1;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller.AccountController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="360.0" style="-fx-background-color: eff9f1;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller.AccountController">
    <children>
       <Label layoutX="35.0" layoutY="209.0" prefHeight="23.0" prefWidth="54.0" style="-fx-text-fill: e94649;" text="Name:">
          <font>
@@ -48,10 +49,19 @@
       <Button layoutX="286.0" layoutY="208.0" mnemonicParsing="false" style="-fx-background-color: e94649;" text="Edit" textFill="WHITE" />
       <Button layoutX="286.0" layoutY="291.0" mnemonicParsing="false" style="-fx-background-color: e94649;" text="Edit" textFill="WHITE" />
       <Button layoutX="286.0" layoutY="372.0" mnemonicParsing="false" style="-fx-background-color: e94649;" text="Edit" textFill="WHITE" />
-      <ImageView fx:id="accountImageView" fitHeight="142.0" fitWidth="207.0" layoutX="72.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="accountLabel" fitHeight="142.0" fitWidth="207.0" layoutX="72.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../images/accountLabel.png" />
          </image>
       </ImageView>
+      <ButtonBar layoutX="-37.0" layoutY="568.0" prefHeight="72.0" prefWidth="397.0" style="-fx-background-color: white;">
+         <buttons>
+            <ImageView fx:id="searchImageView" fitHeight="60.0" fitWidth="60.0" onMouseClicked="#goToCategoryList" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="orderImageView" fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="logoImageView" fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="accountImageView" fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="cartImageView" fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" />
+         </buttons>
+      </ButtonBar>
    </children>
 </AnchorPane>
