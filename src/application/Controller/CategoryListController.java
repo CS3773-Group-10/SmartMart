@@ -23,29 +23,19 @@ import java.util.ResourceBundle;
 
 public class CategoryListController implements Initializable {
 
-    @FXML
-    private ImageView browseImageView;
-
-    @FXML
-    private ImageView fruitImageView;
-
-    @FXML
-    private ImageView veggiesImageView;
-
-    @FXML
-    private ImageView meatsImageView;
-
-    @FXML
-    private ImageView grainsImageView;
-
-    @FXML
-    private ImageView snacksImageView;
-
-    @FXML
-    private ImageView dairyImageView;
-
-    @FXML
-    private Label userLabel;
+    @FXML private ImageView browseImageView;
+    @FXML private ImageView fruitImageView;
+    @FXML private ImageView veggiesImageView;
+    @FXML private ImageView meatsImageView;
+    @FXML private ImageView grainsImageView;
+    @FXML private ImageView snacksImageView;
+    @FXML private ImageView dairyImageView;
+    @FXML private ImageView searchImageView;
+    @FXML private ImageView cartImageView;
+    @FXML private ImageView orderImageView;
+    @FXML private ImageView accountImageView;
+    @FXML private ImageView logoImageView;
+    @FXML private Label userLabel;
 
     private int userId;
 
@@ -78,6 +68,26 @@ public class CategoryListController implements Initializable {
         File snacksFile = new File( "images/snacksIcon.png");
         Image snacksImage = new Image(snacksFile.toURI().toString());
         snacksImageView.setImage(snacksImage);
+
+        File searchFile = new File( "images/searchIcon.png");
+        Image searchImage = new Image(searchFile.toURI().toString());
+        searchImageView.setImage(searchImage);
+
+        File orderFile = new File( "images/ordersIcon.png");
+        Image orderImage = new Image(orderFile.toURI().toString());
+        orderImageView.setImage(orderImage);
+
+        File cartFile = new File( "images/cartIcon.png");
+        Image cartImage = new Image(cartFile.toURI().toString());
+        cartImageView.setImage(cartImage);
+
+        File accountFile = new File( "images/accountIcon.png");
+        Image accountImage = new Image(accountFile.toURI().toString());
+        accountImageView.setImage(accountImage);
+
+        File logoFile = new File( "images/logoIcon.png");
+        Image logoImage = new Image(logoFile.toURI().toString());
+        logoImageView.setImage(logoImage);
     }
 
     //display the user Id on screen
@@ -100,7 +110,7 @@ public class CategoryListController implements Initializable {
         EventTarget target = event.getTarget();
         String category = categories.get(event.getTarget());
 
-        ProductListController controller = new ProductListController(category);
+        ProductListController controller = new ProductListController(category, userId);
 
         FXMLLoader loader = new FXMLLoader(Main.class.getResource("View/productList.fxml"));
         loader.setController(controller);

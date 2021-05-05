@@ -73,7 +73,7 @@ public class RegisterController implements Initializable {
         CustomerModel cm = new CustomerModel();
         if(password.equals(comfirmPassword)){
             int userId = cm.addCustomer(firstName, lastName, email, password);
-            
+
             try {
                 goToCategoryList(event, userId);
             }
