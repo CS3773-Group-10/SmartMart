@@ -49,7 +49,7 @@
             <ImageView fx:id="searchImageView" fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="orderImageView" fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="logoImageView" fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="accountImageView" fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="accountImageView" fitHeight="60.0" fitWidth="60.0" onMouseClicked="#goToAccount" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="cartImageView" fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" />
          </buttons>
       </ButtonBar>
