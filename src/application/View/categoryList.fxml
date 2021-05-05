@@ -1,43 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="360.0" style="-fx-background-color: eff9f1;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller.CategoryListController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="360.0" style="-fx-background-color: eff9f1;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller.CategoryListController">
    <children>
       <ImageView fx:id="browseImageView" fitHeight="123.0" fitWidth="223.0" layoutX="45.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../images/fruitsIcon.png" />
+            <Image url="@../../../images/browseTextLabel.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="fruitImageView" fitHeight="109.0" fitWidth="120.0" layoutX="46.0" layoutY="154.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="fruitImageView" fitHeight="109.0" fitWidth="120.0" layoutX="46.0" layoutY="154.0" onMouseClicked="#goToProductList" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../images/fruitsIcon.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="veggiesImageView" fitHeight="109.0" fitWidth="120.0" layoutX="191.0" layoutY="154.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="veggiesImageView" fitHeight="109.0" fitWidth="120.0" layoutX="191.0" layoutY="154.0" onMouseClicked="#goToProductList" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../images/veggiesIcon.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="dairyImageView" fitHeight="109.0" fitWidth="120.0" layoutX="46.0" layoutY="282.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="dairyImageView" fitHeight="109.0" fitWidth="120.0" layoutX="46.0" layoutY="282.0" onMouseClicked="#goToProductList" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../images/dairyIcon.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="meatsImageView" fitHeight="109.0" fitWidth="120.0" layoutX="191.0" layoutY="282.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="meatsImageView" fitHeight="109.0" fitWidth="120.0" layoutX="191.0" layoutY="282.0" onMouseClicked="#goToProductList" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../images/meatsIcon.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="snacksImageView" fitHeight="109.0" fitWidth="120.0" layoutX="46.0" layoutY="405.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="snacksImageView" fitHeight="109.0" fitWidth="120.0" layoutX="46.0" layoutY="405.0" onMouseClicked="#goToProductList" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../images/snacksIcon.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="grainsImageView" fitHeight="109.0" fitWidth="120.0" layoutX="191.0" layoutY="405.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="grainsImageView" fitHeight="109.0" fitWidth="120.0" layoutX="191.0" layoutY="405.0" onMouseClicked="#goToProductList" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../images/grainsIcon.png" />
          </image>

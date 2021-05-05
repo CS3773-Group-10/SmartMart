@@ -1,13 +1,14 @@
 package application.Model;
 
+import application.Controller.ProductListController;
 import javafx.scene.image.Image;
 import java.io.File;
 import java.sql.Date;
 import java.sql.SQLException;
 
-public class Product {
+//import static application.Controller.ProductListController.productModel;
 
-    private static ProductModel productModel = new ProductModel();
+public class Product {
 
     private int id;
     private String name;
@@ -20,15 +21,15 @@ public class Product {
     public Product(int id) {
         this.id = id;
         try {
-            name = productModel.getName(id);
-            description = productModel.getDescription(id);
-            category = productModel.getCategory(id);
-            quantity = productModel.getQuantity(id);
-            date = productModel.getSellBy(id);
-            image = productModel.getImage(id);
+            name = ProductModel.getName(id);
+            description = ProductModel.getDescription(id);
+            category = ProductModel.getCategory(id);
+            quantity = ProductModel.getQuantity(id);
+            date = ProductModel.getSellBy(id);
+            image = ProductModel.getImage(id);
         }
         catch (SQLException e) {
-            System.err.println((e.getMessage()));
+            System.err.println(e.getMessage());
         }
     }
 
@@ -44,15 +45,15 @@ public class Product {
 
     public void update() {
         try {
-            name = productModel.getName(id);
-            description = productModel.getDescription(id);
-            category = productModel.getCategory(id);
-            quantity = productModel.getQuantity(id);
-            date = productModel.getSellBy(id);
-            image = productModel.getImage(id);
+            name = ProductModel.getName(id);
+            description = ProductModel.getDescription(id);
+            category = ProductModel.getCategory(id);
+            quantity = ProductModel.getQuantity(id);
+            date = ProductModel.getSellBy(id);
+            image = ProductModel.getImage(id);
         }
         catch (SQLException e) {
-            System.err.println((e.getMessage()));
+            System.err.println(e.getMessage());
         }
     }
 }
