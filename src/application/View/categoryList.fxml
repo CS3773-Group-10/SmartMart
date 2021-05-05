@@ -19,7 +19,7 @@
       </ImageView>
       <ImageView fx:id="veggiesImageView" fitHeight="109.0" fitWidth="120.0" layoutX="191.0" layoutY="154.0" onMouseClicked="#goToProductList" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../images/veggiesIcon.png" />
+            <Image url="@../../../images/vegetablesIcon.png" />
          </image>
       </ImageView>
       <ImageView fx:id="dairyImageView" fitHeight="109.0" fitWidth="120.0" layoutX="46.0" layoutY="282.0" onMouseClicked="#goToProductList" pickOnBounds="true" preserveRatio="true">
@@ -29,7 +29,7 @@
       </ImageView>
       <ImageView fx:id="meatsImageView" fitHeight="109.0" fitWidth="120.0" layoutX="191.0" layoutY="282.0" onMouseClicked="#goToProductList" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../images/meatsIcon.png" />
+            <Image url="@../../../images/meatIcon.png" />
          </image>
       </ImageView>
       <ImageView fx:id="snacksImageView" fitHeight="109.0" fitWidth="120.0" layoutX="46.0" layoutY="405.0" onMouseClicked="#goToProductList" pickOnBounds="true" preserveRatio="true">

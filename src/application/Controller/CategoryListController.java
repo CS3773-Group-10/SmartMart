@@ -59,7 +59,7 @@ public class CategoryListController implements Initializable {
         Image fruitImage = new Image(fruitsFile.toURI().toString());
         fruitImageView.setImage(fruitImage);
 
-        File veggiesFile = new File( "images/veggiesIcon.png");
+        File veggiesFile = new File( "images/vegetablesIcon.png");
         Image veggiesImage = new Image(veggiesFile.toURI().toString());
         veggiesImageView.setImage(veggiesImage);
 
@@ -71,7 +71,7 @@ public class CategoryListController implements Initializable {
         Image grainsImage = new Image(grainsFile.toURI().toString());
         grainsImageView.setImage(grainsImage);
 
-        File meatsFile = new File( "images/meatsIcon.png");
+        File meatsFile = new File( "images/meatIcon.png");
         Image meatsImage = new Image(meatsFile.toURI().toString());
         meatsImageView.setImage(meatsImage);
 

@@ -8,12 +8,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -23,6 +25,7 @@ import static java.util.Objects.isNull;
 public class ProductListController implements Initializable {
 
     private AnchorPane mainPane;
+    private ImageView header;
 
     private String category;
     private Product[] productList;
@@ -33,6 +36,12 @@ public class ProductListController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resources) {
+        String path = String.format("images/%sTextLabel.png", category.toLowerCase());
+        System.out.println(path + "\n");
+        File headerFile = new File(path);
+        Image headerImage = new Image(headerFile.toURI().toString());
+        header = new ImageView(headerImage);
+
         try {
             productList = ProductModel.getListByCategory(category);
         }
@@ -44,7 +53,9 @@ public class ProductListController implements Initializable {
     public void start(AnchorPane mainPane) {
         this.mainPane = mainPane;
 
-
+        AnchorPane.setTopAnchor(header, (double)15);
+        AnchorPane.setLeftAnchor(header, (double) 40);
+        mainPane.getChildren().add(header);
 
         for(int i=0; i < productList.length; i++) {
             Product product = productList[i];
