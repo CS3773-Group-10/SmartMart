@@ -55,6 +55,10 @@ public class CategoryListController implements Initializable {
         Image fruitImage = new Image(fruitsFile.toURI().toString());
         fruitImageView.setImage(fruitImage);
 
+        File veggiesFile = new File( "images/veggiesIcon.png");
+        Image veggiesImage = new Image(veggiesFile.toURI().toString());
+        veggiesImageView.setImage(veggiesImage);
+
         File dairyFile = new File( "images/dairyIcon.png");
         Image dairyImage = new Image(dairyFile.toURI().toString());
         dairyImageView.setImage(dairyImage);
