@@ -111,6 +111,7 @@ public class CategoryListController implements Initializable {
         window.setScene(scene);
         window.setResizable(false);
         window.show();
+        controller.start(mainPane);
     }
 
 }

@@ -63,6 +63,8 @@ public class ProductModel {
             catSize = resultSet.getInt(1);
         Product[] categoryList = new Product[catSize];
 
+        System.out.println(String.format("Cat size: %d", catSize));
+
         // fill list with ids
         preparedStatement = conn.prepareStatement(
             "SELECT id, name, description, category, quantity, sellBy FROM products " +
@@ -80,6 +82,7 @@ public class ProductModel {
                     getImage(resultSet.getInt("id")
             ));
             categoryList[i] = product;
+            i++;
         }
         return categoryList;
     }

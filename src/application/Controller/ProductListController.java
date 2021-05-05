@@ -10,15 +10,18 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+import static java.util.Objects.isNull;
+
 public class ProductListController implements Initializable {
 
-    @FXML
     private AnchorPane mainPane;
 
     private String category;
@@ -35,14 +38,22 @@ public class ProductListController implements Initializable {
         }
         catch(SQLException e) {
             System.err.println(e.getMessage());
-            return;
         }
+    }
+
+    public void start(AnchorPane mainPane) {
+        this.mainPane = mainPane;
 
 
-        int numProducts = productList.length;
-        for(int i=0; i < numProducts; i++) {
+
+        for(int i=0; i < productList.length; i++) {
             Product product = productList[i];
-            System.out.println(category + "\n");
+            if (isNull(product))
+                continue;
+            Pane pane = product.getPane();
+            AnchorPane.setTopAnchor(pane, (double) 100 + (140*(i / 2)));
+            AnchorPane.setLeftAnchor(pane, (double) 40 + (160*(i % 2)));
+            mainPane.getChildren().add(pane);
         }
     }
 
