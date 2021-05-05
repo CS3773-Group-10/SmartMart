@@ -81,8 +81,18 @@ public class LoginController implements Initializable {
 
     @FXML
     private void goToCategoryList(ActionEvent event, int id) throws IOException {
-        AnchorPane mainPane = FXMLLoader.load(Main.class.getResource("View/categoryList.fxml"));
-        Scene scene = new Scene(mainPane, 360, 640);
+        FXMLLoader loader = new FXMLLoader();
+
+        //content root is set to src, this may not work if content root set to something else
+        loader.setLocation(getClass().getResource("/application/View/categoryList.fxml"));
+        loader.load();
+
+        //get the controller that the fxml is linked to and update the userId
+        CategoryListController controller = loader.getController();
+        controller.setUserId(id);
+
+        AnchorPane p = (AnchorPane) loader.getRoot();
+        Scene scene = new Scene(p, 360, 640);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(scene);
         window.setResizable(false);

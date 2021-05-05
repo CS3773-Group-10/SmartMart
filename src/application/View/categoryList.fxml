@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -41,5 +42,6 @@
             <Image url="@../../../images/grainsIcon.png" />
          </image>
       </ImageView>
+      <Label fx:id="userLabel" layoutX="65.0" layoutY="118.0" text="Label" />
    </children>
 </AnchorPane>
