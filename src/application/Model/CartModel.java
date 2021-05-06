@@ -34,10 +34,17 @@ public class CartModel {
      * @throws SQLException
      */
     public void removeFromCart(int cartId) throws SQLException {
+        PreparedStatement preparedStatement = conn.prepareStatement(
+            "Delete cart from data base:"
+            printf("Deleted cart:", cartId);
+            preparedStatement.executeUpdate();
+        
         // TODO: removeFromCart(cartId) - removes the cart item from the database
-        // use executeUpdate to perform a DELETE
+        // use executeUpdate to perform a DELETE   
+        
+     
+        
     }
-
 
     /**
      * clearCart(custId)
@@ -53,10 +60,65 @@ public class CartModel {
     // TODO: getCart(custId) - returns list of cart ids associated with the custID
     // use executeQuery to SELECT data
 
-    // TODO: getProduct(cartId) - returns product id associated with the cartId
+   
+                                 
+     /**
+     * getProduct(cartId)
+     * returns productId associated with the cartId
+     *
+     * @param cartId
+     * @throws SQLException
+     */                             
+    public void getProduct( int cartId, int productId ) throws SQLException {
+       PreparedStatement preparedStatement = conn.prepareStatement(
+           // search through cartId and find match
+           //if match return product 
+            "Inset Cart ID cartId"+
+                "(custID, productID)"+
+                "VALUES (?, ?)");
+        preparedStatement.executeUpdate();
+    }
+        
+        
+        
+        
 
-    //TODO: getQuantity(cartId) - returns quantity added to cart at cartId
+    
+     /**
+     * getQuantity(cartId)
+     * returns quantity added to cart at cartId
+     *
+     * @param cartId
+     * @throws SQLException
+     */
+            
+    public void getQuantity( int cartId) throws SQLException {
+    
+        
+    }
+            
+    
+  
+                                 
 
-    // TODO: setQuantity(cartId) - sets the quantity added to cart for cart item at cartId
+        
+        
+     /**
+     * setQuantity(cartId)
+     * sets the quantity added to cart for cart item at cartId
+     *
+     * @param cartId
+     * @throws SQLException
+     */
+      public void setQuantity(int cartId) throws SQLException {
+     
+      // set quantity 
+      // 
+          
+          
+          
+          
+      }
 
-}
+
+
