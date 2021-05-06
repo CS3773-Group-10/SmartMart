@@ -30,7 +30,7 @@ public class CartModel {
      * removeFromCart(cartId)
      * removes the cart item from the database
      *
-     * @param cartId
+     * @param cartId - the cart that the customer item is associated with
      * @throws SQLException
      */
     public void removeFromCart(int cartId) throws SQLException {
@@ -50,8 +50,8 @@ public class CartModel {
      * clearCart(custId)
      * clears the customers cart.
      *
-     * @param custId
-     * @throws SQLException
+     * @param custId - customer the cart item is associated with
+     * @throws SQLException 
      */
     public void clearCart(int custId) throws SQLException {
         // TODO: clearCart(custId) - clears the customers cart. removes all cart items associated with the custId. (This will be utilized when a customer converts their cart into an order)
@@ -66,7 +66,7 @@ public class CartModel {
      * getProduct(cartId)
      * returns productId associated with the cartId
      *
-     * @param cartId
+     * @param cartId - the cart item the customer is associated with 
      * @throws SQLException
      */                             
     public void getProduct( int cartId, int productId ) throws SQLException {
@@ -88,10 +88,9 @@ public class CartModel {
      * getQuantity(cartId)
      * returns quantity added to cart at cartId
      *
-     * @param cartId
+     * @param cartId - the cart number the customer is associated with 
      * @throws SQLException
-     */
-            
+     */  
     public void getQuantity( int cartId) throws SQLException {
     
         
@@ -107,7 +106,7 @@ public class CartModel {
      * setQuantity(cartId)
      * sets the quantity added to cart for cart item at cartId
      *
-     * @param cartId
+     * @param cartId - the cart number the customer is associated with 
      * @throws SQLException
      */
       public void setQuantity(int cartId) throws SQLException {
