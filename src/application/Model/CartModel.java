@@ -25,7 +25,7 @@ public class CartModel {
                 "VALUES (?, ?, ?)");
         preparedStatement.setInt(1, custId);
         preparedStatement.setInt(2, productId);
-        preparedStatement.setInt((3, quantity);
+        preparedStatement.setInt(3, quantity);
         preparedStatement.executeUpdate();
     }
 
