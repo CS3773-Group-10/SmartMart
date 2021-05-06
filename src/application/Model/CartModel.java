@@ -20,12 +20,12 @@ public class CartModel {
      */
     public void addToCart(int custId, int productId, int quantity) throws SQLException {
         PreparedStatement preparedStatement = conn.prepareStatement(
-            "INSERT INTO cartItems"+
-                "(custID, productID, quantity)"+
-                "VALUES (?, ?, ?)");
+                "INSERT INTO cartItems"+
+                        "(custID, productID, quantity)"+
+                        "VALUES (?, ?, ?)");
         preparedStatement.setInt(1, custId);
         preparedStatement.setInt(2, productId);
-        preparedStatement.setInt((3, quantity);
+        preparedStatement.setInt(3, quantity);
         preparedStatement.executeUpdate();
     }
 
