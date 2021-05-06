@@ -1,9 +1,13 @@
 package application.Model;
 
+import application.Main;
+
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class CartModel {
+    private static Connection conn = Main.conn;
 
     /**
      * addToCart(custId, productId, quantity)
