@@ -34,9 +34,7 @@ public class CartController implements Initializable {
     @FXML private ImageView accountImageView;
     @FXML private ImageView logoImageView;
     @FXML private VBox cartVbox;
-
-    @FXML
-    private Label test;
+    @FXML private Label totalLbl;
 
 //    @FXML
 //    private Label addbutton;
@@ -45,7 +43,6 @@ public class CartController implements Initializable {
 
 
     private int userId;
-    private double total;
 
     /**
      * BUTTON ACTION FUNCTIONS
@@ -110,9 +107,8 @@ public class CartController implements Initializable {
             hbox.setPrefWidth(310);
             cartVbox.getChildren().add(hbox);
         }
-
-        // set label to total $: String.format("Total: $%.2f", total)
-
+        double total = cm.getCartTotal(userId);
+        totalLbl.setText(String.format("Total: $%.2f", total));
     }
 
     @Override
