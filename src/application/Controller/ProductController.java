@@ -1,6 +1,7 @@
 package application.Controller;
 
 import application.Main;
+import application.Model.CartModel;
 import application.Model.Product;
 import javafx.event.ActionEvent;
 import javafx.event.EventTarget;
@@ -10,6 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -19,6 +21,7 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
@@ -26,18 +29,26 @@ import java.util.ResourceBundle;
 
 public class ProductController implements Initializable {
 
-    private AnchorPane mainPane;
-    private ImageView productImage;
-
+    @FXML private AnchorPane mainPane;
     @FXML private ImageView searchImageView;
     @FXML private ImageView cartImageView;
     @FXML private ImageView orderImageView;
     @FXML private ImageView accountImageView;
     @FXML private ImageView logoImageView;
+    @FXML private ImageView productImageView;
+    @FXML private Label productNameLabel;
+    @FXML private Label productPriceLabel;
+    @FXML private Label productDescriptionLabel;
+    @FXML private Label quantityRemainingLabel;
+    @FXML private Label quantitySelectedLabel;
+    @FXML private Button minusButton;
+    @FXML private Button plusButton;
+    @FXML private Button addToCartButton;
 
     private Product product;
 
     private int userId;
+    private int quantitySelected;
 
     public ProductController(Product product) {
         this.product = product;
@@ -45,13 +56,23 @@ public class ProductController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resources) {
-        String path = String.format("images/product-images/product-%d.png", product.getId());
 
     }
 
     public void start(AnchorPane mainPane, int userId) {
         this.mainPane = mainPane;
         this.userId = userId;
+        quantitySelected = 0;
+
+        productNameLabel.setText(product.getName());
+        productPriceLabel.setText(product.getPriceAsString());
+        productDescriptionLabel.setText(product.getDescription());
+        quantityRemainingLabel.setText(String.format("%d left in stock", product.getQuantity()));
+        quantitySelectedLabel.setText("0");
+
+        File productImageFile = new File(String.format("images/product-images/product-%d.png", product.getId()));
+        Image productImage = new Image(productImageFile.toURI().toString());
+        productImageView.setImage(productImage);
 
         File searchFile = new File( "images/searchIcon.png");
         Image searchImage = new Image(searchFile.toURI().toString());
@@ -118,7 +139,7 @@ public class ProductController implements Initializable {
     }
 
     @FXML
-    public void goToAccount(MouseEvent event) throws IOException {
+    private void goToAccount(MouseEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader();
 
         loader.setLocation(getClass().getResource("/application/View/account.fxml"));
@@ -136,9 +157,32 @@ public class ProductController implements Initializable {
             window.show();
         }
         catch (Exception e) {
-            //exception
+            e.printStackTrace();
         }
     }
 
+    @FXML
+    private void subtractItem(ActionEvent event) {
+        if (quantitySelected > 0)
+            quantitySelected--;
+        quantitySelectedLabel.setText(String.valueOf(quantitySelected));
+    }
+
+    @FXML
+    private void addItem(ActionEvent event) {
+        if (quantitySelected < product.getQuantity())
+            quantitySelected++;
+        quantitySelectedLabel.setText(String.valueOf(quantitySelected));
+    }
+
+    @FXML
+    private void addToCart(ActionEvent event) {
+        try {
+            CartModel.addToCart(userId, product.getId(), quantitySelected);
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
 }

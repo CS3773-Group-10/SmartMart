@@ -10,10 +10,11 @@ import java.sql.SQLException;
 
 public class Product {
 
-    private int id;
+    private final int id;
     private String name;
     private String description;
     private String category;
+    private int price;
     private int quantity;
     private Date date;
     private Image image;
@@ -24,6 +25,7 @@ public class Product {
             name = ProductModel.getName(id);
             description = ProductModel.getDescription(id);
             category = ProductModel.getCategory(id);
+            price = ProductModel.getPrice(id);
             quantity = ProductModel.getQuantity(id);
             date = ProductModel.getSellBy(id);
             image = ProductModel.getImage(id);
@@ -33,11 +35,13 @@ public class Product {
         }
     }
 
-    public Product(int id, String name, String description, String category, int quantity, Date date, Image image) {
+    public Product(int id, String name, String description, String category, int price,
+                   int quantity, Date date, Image image) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.category = category;
+        this.price = price;
         this.quantity = quantity;
         this.date = date;
         this.image = image;
@@ -95,5 +99,13 @@ public class Product {
 
     public Image getImage() {
         return image;
+    }
+
+    public String getPriceAsString() {
+        return String.format("$%d.%02d", (price/100), (price%100));
+    }
+
+    public int getPriceAsInt() {
+        return price;
     }
 }

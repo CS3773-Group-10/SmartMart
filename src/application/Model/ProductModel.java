@@ -24,14 +24,15 @@ public class ProductModel {
         Product[] inventoryList = new Product[invSize];
 
         // fill list with ids
-        resultSet = statement.executeQuery("SELECT id, name, description, category, quantity, sellBy " +
-                "FROM products");
+        resultSet = statement.executeQuery(
+                "SELECT id, name, description, category, price, quantity, sellBy FROM products");
         int i = 0;
         while (resultSet.next()) {
             Product product = new Product(resultSet.getInt("id"),
                     resultSet.getString("name"),
                     resultSet.getString("description"),
                     resultSet.getString("category"),
+                    resultSet.getInt("price"),
                     resultSet.getInt("quantity"),
                     resultSet.getDate("sellBy"),
                     getImage(resultSet.getInt("id")
@@ -65,7 +66,7 @@ public class ProductModel {
 
         // fill list with ids
         preparedStatement = conn.prepareStatement(
-            "SELECT id, name, description, category, quantity, sellBy FROM products " +
+            "SELECT id, name, description, category, price, quantity, sellBy FROM products " +
                     "WHERE category=?");
         preparedStatement.setString(1, category);
         resultSet = preparedStatement.executeQuery();
@@ -75,6 +76,7 @@ public class ProductModel {
                     resultSet.getString("name"),
                     resultSet.getString("description"),
                     resultSet.getString("category"),
+                    resultSet.getInt("price"),
                     resultSet.getInt("quantity"),
                     resultSet.getDate("sellBy"),
                     getImage(resultSet.getInt("id")
@@ -213,14 +215,14 @@ public class ProductModel {
     }
 
 
-    public double getPrice(int id) throws SQLException {
+    public static int getPrice(int id) throws SQLException {
         PreparedStatement preparedStatement = conn.prepareStatement(
             "SELECT price FROM products"+
                 " WHERE id=?");
         preparedStatement.setInt(1, id);
         ResultSet resultSet = preparedStatement.executeQuery();
         if (resultSet.next()) {
-            return (resultSet.getInt("price")/100.00);
+            return (resultSet.getInt("price"));
         }
         else return -1;
     }
