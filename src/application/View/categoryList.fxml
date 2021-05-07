@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="360.0" style="-fx-background-color: eff9f1;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller.CategoryListController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="360.0" style="-fx-background-color: eff9f1;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller.CategoryListController">
    <children>
       <ImageView fx:id="browseImageView" fitHeight="123.0" fitWidth="223.0" layoutX="55.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -16,31 +17,49 @@
          <image>
             <Image url="@../../../images/fruitsIcon.png" />
          </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </ImageView>
       <ImageView fx:id="veggiesImageView" fitHeight="109.0" fitWidth="120.0" layoutX="200.0" layoutY="154.0" onMouseClicked="#goToProductList" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../images/vegetablesIcon.png" />
          </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </ImageView>
       <ImageView fx:id="dairyImageView" fitHeight="109.0" fitWidth="120.0" layoutX="56.0" layoutY="282.0" onMouseClicked="#goToProductList" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../images/dairyIcon.png" />
          </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </ImageView>
       <ImageView fx:id="meatsImageView" fitHeight="109.0" fitWidth="120.0" layoutX="200.0" layoutY="282.0" onMouseClicked="#goToProductList" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../images/meatIcon.png" />
          </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </ImageView>
       <ImageView fx:id="snacksImageView" fitHeight="109.0" fitWidth="120.0" layoutX="56.0" layoutY="405.0" onMouseClicked="#goToProductList" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../images/snacksIcon.png" />
          </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </ImageView>
       <ImageView fx:id="grainsImageView" fitHeight="109.0" fitWidth="120.0" layoutX="200.0" layoutY="405.0" onMouseClicked="#goToProductList" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../images/grainsIcon.png" />
          </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </ImageView>
       <ButtonBar layoutX="-37.0" layoutY="568.0" prefHeight="72.0" prefWidth="397.0" style="-fx-background-color: white;">
          <buttons>

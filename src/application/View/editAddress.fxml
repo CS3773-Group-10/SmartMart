@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.Label?>
@@ -10,7 +11,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="360.0" style="-fx-background-color: eff9f1;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller.editAddressController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="360.0" style="-fx-background-color: eff9f1;" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller.editAddressController">
    <children>
       <Label layoutX="31.0" layoutY="185.0" style="-fx-text-fill: e94649;" text="Current Address:">
          <font>
@@ -32,18 +33,27 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <TextField fx:id="newAddress" layoutX="142.0" layoutY="265.0" promptText="Address" />
+      <TextField fx:id="newAddress" layoutX="142.0" layoutY="265.0" promptText="Address">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor></TextField>
       <Button layoutX="64.0" layoutY="521.0" mnemonicParsing="false" onAction="#updateAddress" prefHeight="31.0" prefWidth="231.0" style="-fx-background-color: e94649;" text="confirm" textFill="WHITE">
          <font>
             <Font size="15.0" />
-         </font></Button>
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
       <ImageView fx:id="editAddressImageView" fitHeight="115.0" fitWidth="252.0" layoutX="54.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../images/editAddressLabel.png" />
          </image>
       </ImageView>
       <Label fx:id="messageLabel" layoutX="108.0" layoutY="493.0" prefHeight="21.0" prefWidth="252.0" style="-fx-text-fill: e94649;" />
-      <PasswordField fx:id="password" layoutX="142.0" layoutY="343.0" promptText="Password" />
+      <PasswordField fx:id="password" layoutX="142.0" layoutY="343.0" promptText="Password">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor></PasswordField>
       <ButtonBar layoutX="-37.0" layoutY="568.0" prefHeight="72.0" prefWidth="397.0" style="-fx-background-color: white;">
          <buttons>
             <ImageView fx:id="searchImageView" fitHeight="60.0" fitWidth="60.0" onMouseClicked="#goToCategoryList" pickOnBounds="true" preserveRatio="true" />
