@@ -65,28 +65,25 @@ public class LoginController implements Initializable {
             // verify
             CustomerModel cm = new CustomerModel();
             if(cm.verifyCustomer(emailInput, passInput)) {
-                // TODO: SWITCH SCREENS WITH USER ID
                 int id = cm.getUserId(emailInput);
-                //loginMessageLabel.setText("Login successful! id=" + id);
-                try {
-                    goToCategoryList(event, id);
-                }
-                catch (IOException e) {
-                    //something
-                }
+                goToCategoryList(event, id);
             }
             else loginMessageLabel.setText("Login attempt failed.");
         }
     }
 
     @FXML
-    private void goToCategoryList(ActionEvent event, int id) throws IOException {
-        FXMLLoader loader = new FXMLLoader();
+    private void goToCategoryList(ActionEvent event, int id) {
+        FXMLLoader loader = new FXMLLoader(Main.class.getResource("View/categoryList.fxml"));
 
         //content root is set to src, this may not work if content root set to something else
-        loader.setLocation(getClass().getResource("/application/View/categoryList.fxml"));
-        loader.load();
-
+        try {
+            loader.load();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+            return;
+        }
         //get the controller that the fxml is linked to and update the userId
         CategoryListController controller = loader.getController();
         controller.setUserId(id);
@@ -107,6 +104,4 @@ public class LoginController implements Initializable {
         window.setResizable(false);
         window.show();
     }
-
-
 }

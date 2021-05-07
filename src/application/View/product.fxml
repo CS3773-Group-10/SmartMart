@@ -1,14 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
 <?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="application.Controller.ProductController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="360.0" style="-fx-background-color: eff9f1;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <Button fx:id="backToProductListButton" layoutX="96.0" layoutY="552.0" mnemonicParsing="false" style="-fx-background-color: eff9f1; -fx-text-fill: e94649; -fx-effect: null;" text="Return to Product List" />
+      <ImageView fitHeight="240.0" fitWidth="240.0" layoutX="50.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true" />
+      <Label layoutX="50.0" layoutY="290.0" text="Product Name">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER_RIGHT" text="Price" AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="290.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="50.0" layoutY="420.0" text="# left in stock">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="50.0" layoutY="320.0" prefHeight="60.0" prefWidth="240.0" text="Description that is long and spans multiple lines for testing purposes yay this is so cool" wrapText="true">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Button layoutX="211.0" layoutY="428.0" mnemonicParsing="false" text="Add To Cart" />
+      <Button layoutX="265.0" layoutY="395.0" mnemonicParsing="false" text="+" />
+      <Label layoutX="246.0" layoutY="395.0" text="#">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Button layoutX="210.0" layoutY="396.0" mnemonicParsing="false" text="-" />
+    </children>
 </AnchorPane>
