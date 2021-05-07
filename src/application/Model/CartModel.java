@@ -61,7 +61,7 @@ public class CartModel {
      * @param custId    - the customer the cart item is associated with
      * @throws SQLException
      */
-    public void clearCart(int custId) throws SQLException {
+    public static void clearCart(int custId) throws SQLException {
         PreparedStatement preparedStatement = conn.prepareStatement(
                 "DELETE FROM cartItems "+
                         "WHERE custId = ?");
@@ -217,4 +217,15 @@ public class CartModel {
         return (String.format("$%d.%02d", (total / 100), (total % 100)));
     }
 
+    public static int isEmpty(int userId) throws SQLException{
+        PreparedStatement preparedStatement = conn.prepareStatement(
+                "SELECT COUNT(custID) FROM cartItems "+
+                        "WHERE id = ?");
+        preparedStatement.setInt(1, userId);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        if (resultSet.next()) {
+            return resultSet.getInt(1);
+        }
+        else return -1;
+    }
 }
