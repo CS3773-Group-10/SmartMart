@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="application.Controller.CartController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane fx:id="buttonAddToCart" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller.CartController">
+   <children>
+      <Label fx:id="addbutton" layoutX="189.0" layoutY="14.0" prefHeight="54.0" prefWidth="199.0" text="     Welcome to Cart :) " textFill="#367cb2" textOverrun="CENTER_ELLIPSIS">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Button layoutX="282.0" layoutY="155.0" mnemonicParsing="false" text="Clear Cart " />
+      <Button layoutX="159.0" layoutY="155.0" mnemonicParsing="false" text="Remove Cart Item" />
+      <Button fx:id="buttonAddToCart" layoutX="67.0" layoutY="155.0" mnemonicParsing="false" text="Add to Cart" />
+      <Button layoutX="362.0" layoutY="155.0" mnemonicParsing="false" text="Cart Id Lookup" />
+   </children>
 </AnchorPane>
