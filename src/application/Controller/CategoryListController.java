@@ -105,13 +105,12 @@ public class CategoryListController implements Initializable {
         FXMLLoader loader = new FXMLLoader(Main.class.getResource("View/productList.fxml"));
         loader.setController(controller);
 
-        AnchorPane mainPane = loader.load();
-        Scene scene = new Scene(mainPane, 360, 640);
+        AnchorPane pane = loader.load();
+        Scene scene = new Scene(pane, 360, 640);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(scene);
         window.setResizable(false);
         window.show();
-        controller.start(mainPane, userId);
+        controller.start(pane, userId);
     }
-
 }
