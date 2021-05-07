@@ -107,8 +107,8 @@ public class CartController implements Initializable {
             hbox.setPrefWidth(310);
             cartVbox.getChildren().add(hbox);
         }
-        double total = cm.getCartTotal(userId);
-        totalLbl.setText(String.format("Total: $%.2f", total));
+        String total = CartModel.getCartTotalAsString(userId);
+        totalLbl.setText(total);
     }
 
     @Override
