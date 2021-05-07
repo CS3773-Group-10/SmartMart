@@ -176,14 +176,14 @@ public class CartModel {
 
 
     public double getCartTotal(int custId) throws SQLException {
-        int total = 0;
+        double total = 0;
         PreparedStatement preparedStatement = conn.prepareStatement(
-            "SELECT cartId FROM cartItems "+
+            "SELECT id FROM cartItems "+
                 "WHERE custId = ?");
         preparedStatement.setInt(1, custId);
         ResultSet resultSet = preparedStatement.executeQuery();
         while (resultSet.next()) {
-            int cid = resultSet.getInt("cartId");
+            int cid = resultSet.getInt("id");
             total += getItemsPrice(cid);
         }
         return total;
