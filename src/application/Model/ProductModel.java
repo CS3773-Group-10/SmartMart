@@ -98,9 +98,9 @@ public class ProductModel {
      */
     public static void setQuantity(int id, int qty) throws SQLException {
         PreparedStatement preparedStatement = conn.prepareStatement(
-            "UPDATE products"+
-                "SET quantity=?"+
-                " WHERE id=?");
+            "UPDATE products "+
+                "SET quantity=? "+
+                "WHERE id=?");
         preparedStatement.setInt(1, qty);
         preparedStatement.setInt(2, id);
         preparedStatement.executeUpdate();

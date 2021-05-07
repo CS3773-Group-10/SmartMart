@@ -3,6 +3,8 @@ package application.Controller;
 import application.Main;
 import application.Model.CartModel;
 import application.Model.Product;
+import application.Model.ProductModel;
+import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventTarget;
 import javafx.fxml.FXML;
@@ -10,6 +12,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -17,11 +20,13 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
@@ -179,10 +184,42 @@ public class ProductController implements Initializable {
     private void addToCart(ActionEvent event) {
         try {
             CartModel.addToCart(userId, product.getId(), quantitySelected);
+            // update stock quantity in database
+            int newStockQty = product.getQuantity() - quantitySelected;
+            ProductModel.setQuantity(product.getId(), newStockQty);
+
+            // update product object
+            product = new Product(product.getId());
+
+            // reload view
+            reload(event);
         }
         catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+
+    private void reload(ActionEvent event) {
+        ProductController controller = new ProductController(product);
+
+        FXMLLoader loader = new FXMLLoader(Main.class.getResource("View/product.fxml"));
+        loader.setController(controller);
+
+        AnchorPane pane;
+        try {
+            pane = loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return;
+        }
+
+        Scene scene = new Scene(pane, 360, 640);
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(scene);
+        window.setResizable(false);
+        window.show();
+        controller.start(pane, userId);
     }
 
 }
