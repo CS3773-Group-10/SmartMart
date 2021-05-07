@@ -15,7 +15,7 @@ public class Main extends Application {
     public static Connection conn; // connection to database
 
     @Override
-    public void start(Stage primaryStage) throws Exception{
+    public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("View/login.fxml"));
         primaryStage.setTitle("SmartMart Application :)");
         primaryStage.setScene(new Scene(root, 360, 640));
@@ -59,7 +59,7 @@ public class Main extends Application {
                 if (conn != null) { // close conn if it exists
                     conn.close();
                 }
-            } //change this 
+            }
             catch (SQLException e) {
                 System.err.println((e.getMessage()));
             }

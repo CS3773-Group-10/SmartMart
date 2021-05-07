@@ -1,14 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="application.Controller.CategoryListController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="360.0" style="-fx-background-color: eff9f1;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller.CategoryListController">
+   <children>
+      <ImageView fx:id="browseImageView" fitHeight="123.0" fitWidth="223.0" layoutX="55.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../images/browseTextLabel.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="fruitImageView" fitHeight="109.0" fitWidth="120.0" layoutX="56.0" layoutY="154.0" onMouseClicked="#goToProductList" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../images/fruitsIcon.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="veggiesImageView" fitHeight="109.0" fitWidth="120.0" layoutX="200.0" layoutY="154.0" onMouseClicked="#goToProductList" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../images/vegetablesIcon.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="dairyImageView" fitHeight="109.0" fitWidth="120.0" layoutX="56.0" layoutY="282.0" onMouseClicked="#goToProductList" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../images/dairyIcon.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="meatsImageView" fitHeight="109.0" fitWidth="120.0" layoutX="200.0" layoutY="282.0" onMouseClicked="#goToProductList" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../images/meatIcon.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="snacksImageView" fitHeight="109.0" fitWidth="120.0" layoutX="56.0" layoutY="405.0" onMouseClicked="#goToProductList" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../images/snacksIcon.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="grainsImageView" fitHeight="109.0" fitWidth="120.0" layoutX="200.0" layoutY="405.0" onMouseClicked="#goToProductList" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../images/grainsIcon.png" />
+         </image>
+      </ImageView>
+      <ButtonBar layoutX="-37.0" layoutY="568.0" prefHeight="72.0" prefWidth="397.0" style="-fx-background-color: white;">
+         <buttons>
+            <ImageView fx:id="searchImageView" fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="orderImageView" fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="logoImageView" fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="accountImageView" fitHeight="60.0" fitWidth="60.0" onMouseClicked="#goToAccount" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="cartImageView" fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" />
+         </buttons>
+      </ButtonBar>
+   </children>
 </AnchorPane>
