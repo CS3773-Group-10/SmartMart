@@ -129,6 +129,7 @@ public class ProductListController implements Initializable {
         window.setScene(scene);
         window.setResizable(false);
         window.show();
+        controller.start(pane, userId);
     }
 
 }

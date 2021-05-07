@@ -97,7 +97,6 @@ public class CategoryListController implements Initializable {
         categories.put(meatsImageView, "Meat");
         categories.put(snacksImageView, "Snacks");
 
-        EventTarget target = event.getTarget();
         String category = categories.get(event.getTarget());
 
         ProductListController controller = new ProductListController(category);

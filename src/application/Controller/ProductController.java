@@ -1,7 +1,10 @@
 package application.Controller;
 
+import application.Main;
 import application.Model.Product;
 import javafx.event.ActionEvent;
+import javafx.event.EventTarget;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -13,6 +16,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 
@@ -20,6 +25,8 @@ public class ProductController implements Initializable {
 
     private AnchorPane mainPane;
     private ImageView productImage;
+
+    @FXML
     private Button backToProductListButton;
 
     private Product product;
@@ -39,30 +46,29 @@ public class ProductController implements Initializable {
         this.mainPane = mainPane;
         this.userId = userId;
 
-        backToProductListButton = (Button) mainPane.getChildren().get(0);
-        backToProductListButton.setOnAction(this::backToProductList);
-
+        //backToProductListButton = (Button) mainPane.getChildren().get(0);
+        backToProductListButton.setOnAction(event -> backToProductList(event));
     }
 
     private void backToProductList(ActionEvent event) {
-        FXMLLoader loader = new FXMLLoader();
+        ProductListController controller = new ProductListController(product.getCategory());
 
-        loader.setLocation(getClass().getResource("/application/View/productList.fxml"));
+        FXMLLoader loader = new FXMLLoader(Main.class.getResource("View/productList.fxml"));
+        loader.setController(controller);
+
+        AnchorPane pane;
         try {
-            loader.load();
+            pane = loader.load();
         } catch (IOException e) {
             e.printStackTrace();
+            return;
         }
-
-        CategoryListController controller = loader.getController();
-        controller.setUserId(userId);
-
-        AnchorPane p = loader.getRoot();
-        Scene scene = new Scene(p, 360, 640);
+        Scene scene = new Scene(pane, 360, 640);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(scene);
         window.setResizable(false);
         window.show();
+        controller.start(pane, userId);
     }
 
 }
