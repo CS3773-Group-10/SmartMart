@@ -2,6 +2,8 @@ package application.Controller;
 import application.Model.CartModel;
 import application.Model.Order;
 import application.Model.ProductModel;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -12,14 +14,10 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
-import java.awt.event.ActionEvent;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -71,6 +69,7 @@ public class CartController implements Initializable {
     public void populateCart(int userId) throws SQLException {
         // get cart for the user (list)
         ArrayList<Integer> cart = CartModel.getCart(userId);
+        CartModel cm = new CartModel();
 
         for (Integer cartId : cart) { // for each item in the cart, create an hbox
             int productId = CartModel.getProduct(cartId);
@@ -99,6 +98,22 @@ public class CartController implements Initializable {
             Button del = new Button("delete");
             del.setTextFill(Color.color(1, 0, 0));
 
+            EventHandler<ActionEvent> delEvent = e -> {
+                try {
+                    // delete the cart item from the cart
+                    cm.removeFromCart(cartId);
+
+                    // reload cart view
+                    reload(e);
+
+                } catch (SQLException | IOException e1) {
+                    e1.printStackTrace();
+                }
+            };
+
+            // assign delEvent action to del button
+            del.setOnAction(delEvent);
+
             HBox.setHgrow(quantityLabel, Priority.ALWAYS);
             quantityLabel.setMaxWidth(Double.MAX_VALUE);
             hbox.getChildren().addAll(productImgView, nameLabel, quantityLabel, priceLabel, del);
@@ -108,6 +123,58 @@ public class CartController implements Initializable {
         String total = CartModel.getCartTotalAsString(userId);
         totalLbl.setText(total);
     }
+
+    /**
+     * Clears the cart
+     *
+     * @param event
+     */
+    @FXML
+    void clearCart(ActionEvent event) throws SQLException, IOException {
+        // get cart for the user (list)
+        ArrayList<Integer> cart = CartModel.getCart(userId);
+        CartModel cm = new CartModel();
+
+        for (Integer cartId : cart) { // for each item in the cart, remove
+            try {
+                // delete the cart item from the cart
+                cm.removeFromCart(cartId);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        // reload cart view
+        reload(event);
+    }
+
+    /**
+     * reload(event)
+     * reloads the cart view
+     *
+     * @param event
+     * @throws IOException
+     */
+    public void reload(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/application/View/cart.fxml"));
+        loader.load();
+
+        //get the controller that the fxml is linked to and update the userId
+        CartController controller = loader.getController();
+        try {
+            controller.setUserId(userId);
+            Pane p = loader.getRoot();
+            Scene scene = new Scene(p, 360, 640);
+            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            window.setScene(scene);
+            window.setResizable(false);
+            window.show();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
