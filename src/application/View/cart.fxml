@@ -51,7 +51,7 @@
                         <Insets left="25.0" right="25.0" top="25.0" />
                      </VBox.margin>
                   </HBox>
-                  <Button alignment="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="redBtn" text="Checkout →">
+                  <Button alignment="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#checkout" styleClass="redBtn" text="Checkout →">
                      <VBox.margin>
                         <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
                      </VBox.margin>
