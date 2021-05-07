@@ -48,7 +48,7 @@
       </Label>
       <Button layoutX="286.0" layoutY="208.0" mnemonicParsing="false" style="-fx-background-color: e94649;" text="Edit" textFill="WHITE" />
       <Button layoutX="286.0" layoutY="291.0" mnemonicParsing="false" style="-fx-background-color: e94649;" text="Edit" textFill="WHITE" />
-      <Button layoutX="286.0" layoutY="372.0" mnemonicParsing="false" style="-fx-background-color: e94649;" text="Edit" textFill="WHITE" />
+      <Button layoutX="286.0" layoutY="372.0" mnemonicParsing="false" onAction="#editAddress" style="-fx-background-color: e94649;" text="Edit" textFill="WHITE" />
       <ImageView fx:id="accountLabel" fitHeight="142.0" fitWidth="207.0" layoutX="72.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../images/accountLabel.png" />

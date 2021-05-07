@@ -1,6 +1,8 @@
 package application.Controller;
 
+import application.Main;
 import application.Model.CustomerModel;
+import javafx.event.ActionEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -100,5 +102,29 @@ public class AccountController implements Initializable{
         window.setScene(scene);
         window.setResizable(false);
         window.show();
+    }
+
+    @FXML
+    public void editAddress(ActionEvent event) throws IOException{
+        FXMLLoader loader = new FXMLLoader();
+
+        //content root is set to src, this may not work if content root set to something else
+        loader.setLocation(getClass().getResource("/application/View/editAddress.fxml"));
+        loader.load();
+
+        //get the controller that the fxml is linked to and update the userId
+        editAddressController controller = loader.getController();
+        try {
+            controller.setUserId(userId);
+            AnchorPane p = (AnchorPane) loader.getRoot();
+            Scene scene = new Scene(p, 360, 640);
+            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            window.setScene(scene);
+            window.setResizable(false);
+            window.show();
+        }
+        catch (Exception e) {
+            //exception
+        }
     }
 }
