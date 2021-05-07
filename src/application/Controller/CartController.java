@@ -175,9 +175,31 @@ public class CartController implements Initializable {
         }
     }
 
-    public void checkout(javafx.event.ActionEvent actionEvent) throws SQLException{
-       // int isEmpty = CartModel.isEmpty(userId);
-        int orderId = Order.createOrder(userId, 1122233, "Confirmed");
-        CartModel.clearCart(userId);
+    @FXML
+    public void checkout(javafx.event.ActionEvent actionEvent) throws IOException{
+        try {
+            int orderId = Order.createOrder(userId, 1122233, "Confirmed");
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/application/View/checkout.fxml"));
+            loader.load();
+            //get the controller that the fxml is linked to and update the userId
+            CheckoutController controller = loader.getController();
+
+            try {
+                //loader.load();
+                controller.setId(userId, orderId);
+                AnchorPane p = loader.getRoot();
+                Scene scene = new Scene(p, 360, 640);
+                Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+                window.setScene(scene);
+                window.setResizable(false);
+                window.show();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        catch (SQLException e) {
+
+        }
     }
 }
