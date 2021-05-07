@@ -42,7 +42,6 @@ public class ProductListController implements Initializable {
 
     private int userId;
 
-    @FXML private Button backToCategoryListButton;
     @FXML private ImageView searchImageView;
     @FXML private ImageView cartImageView;
     @FXML private ImageView orderImageView;
@@ -91,8 +90,6 @@ public class ProductListController implements Initializable {
     public void start(AnchorPane mainPane) {
         this.mainPane = mainPane;
 
-        backToCategoryListButton.setOnAction(actionEvent -> backToCategoryList(actionEvent));
-
         AnchorPane.setTopAnchor(header,15.0);
         AnchorPane.setLeftAnchor(header, 40.0);
         mainPane.getChildren().add(header);
@@ -112,7 +109,7 @@ public class ProductListController implements Initializable {
     }
 
     @FXML
-    private void backToCategoryList(ActionEvent event) {
+    private void goToCategoryList(MouseEvent event) {
         FXMLLoader loader = new FXMLLoader();
 
         loader.setLocation(getClass().getResource("/application/View/categoryList.fxml"));
