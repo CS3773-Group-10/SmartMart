@@ -86,30 +86,66 @@ public class CartModel {
      * @param custId
      * @throws SQLException
      */
-     public void getCart(int custId) throws SQLException {
-         // execute the query, and get a java resultset
-         String query = "SELECT * FROM";
-
-         PreparedStatement preparedStatement = conn.prepareStatement(
-                 "SELECT * FROM custId, productId , quantity");
-
-         preparedStatement.setInt(1, custId);
-         //create java statement
-
-         //execute the query, and get result
-         //preparedStatement.executeQuery();
-         //Statement rs = st.executeQuery(query);
-
-         //iterate through the result
-         //while (rs.next()) ;
+    public static String getCart(int custId) throws SQLException {
+        PreparedStatement preparedStatement = conn.prepareStatement(
+                "SELECT id FROM products"+
+                        " WHERE id=?");
+        preparedStatement.setInt(1, custId);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        if (resultSet.next()) {
+            return resultSet.getString("name");
+        }
+        else return null;
+    }
 
 
-     }
+
          // TODO: getProduct(cartId) - returns product id associated with the cartId
 
-         //TODO: getQuantity(cartId) - returns quantity added to cart at cartId
 
-         // TODO: setQuantity(cartId) - sets the quantity added to cart for cart item at cartId
+
+    /**
+     * getQuantity(cartId)
+     *
+     * gets the quantity added to cart at cartId
+     *
+     * @param cartId    the id of the product to query
+     * @return      the quantity of the product as an int,
+     *              returns -1 if query fails
+     * @throws SQLException
+     */
+    public static int getQuantity(int cartId) throws SQLException {
+        PreparedStatement preparedStatement = conn.prepareStatement(
+                "SELECT quantity FROM products"+
+                        " WHERE cartId=?");
+        preparedStatement.setInt(1, cartId);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        if (resultSet.next()) {
+            return resultSet.getInt("quantity");
+        }
+        else return -1;
+    }
+
+
+
+
+    /**
+     * setQuantity(cartId, quantity )
+     * sets the quantity added to cart for cart item at cartId
+     *
+     * @param cartId    id of the product to update
+     * @param quantity   quantity to update to
+     * @throws SQLException
+     */
+    public static void setQuantity(int cartId, int quantity) throws SQLException {
+        PreparedStatement preparedStatement = conn.prepareStatement(
+                "UPDATE products"+
+                        "SET quantity=?"+
+                        " WHERE id=?");
+        preparedStatement.setInt(1, quantity);
+        preparedStatement.setInt(2, cartId);
+        preparedStatement.executeUpdate();
+    }
 
 
      }
