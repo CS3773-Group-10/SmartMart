@@ -59,7 +59,7 @@ public class Product {
 
     public BorderPane getPane() {
         ImageView imageView = new ImageView(image);
-        imageView.setFitHeight(100);
+        imageView.setFitHeight(120);
         imageView.setFitWidth(120);
         Label nameLabel = new Label(name);
 
