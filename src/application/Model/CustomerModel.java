@@ -51,6 +51,24 @@ public class CustomerModel {
         return -1;
     }
 
+    /**
+     * getFirstName(id)
+     * returns the firstName of the user with the provided id
+     *
+     * @param id the id of the user to firstName for
+     * @return firstName of user with id if exists, else return N/A
+     * @throws SQLException
+     */
+    public String getFirstName(int id) throws SQLException {
+        preparedStatement = conn.prepareStatement
+                ("SELECT firstName FROM customers WHERE id=?");
+        preparedStatement.setString(1, String.valueOf(id));
+        resultSet = preparedStatement.executeQuery();
+        if(resultSet.next()) { // user exists
+            return resultSet.getString("firstName");
+        }
+        return "N/A";
+    }
 
     /**
      * addCustomer(firstName, lastName, email, password)
@@ -105,5 +123,60 @@ public class CustomerModel {
         preparedStatement.setInt(2, id);
         preparedStatement.executeUpdate();
     }
+    /**
+     * getLastName(id)
+     * returns the lastName of the user with the provided id
+     *
+     * @param id the id of the user to lastName for
+     * @return lastName of user with id if exists, else return N/A
+     * @throws SQLException
+     */
+    public String getLastName(int id) throws SQLException{
+        preparedStatement = conn.prepareStatement
+                ("SELECT lastName FROM customers WHERE id=?");
+        preparedStatement.setString(1, String.valueOf(id));
+        resultSet = preparedStatement.executeQuery();
+        if(resultSet.next()) { // user exists
+            return resultSet.getString("lastName");
+        }
+        return "N/A";
+    }
 
+    /**
+     * getEmail(id)
+     * returns the email of the user with the provided id
+     *
+     * @param id the id of the user to email for
+     * @return email of user with id if exists, else return N/A
+     * @throws SQLException
+     */
+    public String getEmail(int id) throws SQLException{
+        preparedStatement = conn.prepareStatement
+                ("SELECT email FROM customers WHERE id=?");
+        preparedStatement.setString(1, String.valueOf(id));
+        resultSet = preparedStatement.executeQuery();
+        if(resultSet.next()) { // user exists
+            return resultSet.getString("email");
+        }
+        return "N/A";
+    }
+
+    /**
+     * getAddress(id)
+     * returns the email of the user with the provided id
+     *
+     * @param id the id of the user to address for
+     * @return address of user with id if exists, else return N/A
+     * @throws SQLException
+     */
+    public String getAddress(int id) throws SQLException{
+        preparedStatement = conn.prepareStatement
+                ("SELECT address FROM customers WHERE id=?");
+        preparedStatement.setString(1, String.valueOf(id));
+        resultSet = preparedStatement.executeQuery();
+        if(resultSet.next()) { // user exists
+            return resultSet.getString("address");
+        }
+        return "N/A";
+    }
 }
