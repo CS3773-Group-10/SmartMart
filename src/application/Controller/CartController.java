@@ -1,6 +1,8 @@
 package application.Controller;
 import application.Model.CartModel;
 import application.Model.ProductModel;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -18,7 +20,6 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
-import java.awt.event.ActionEvent;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -102,6 +103,13 @@ public class CartController implements Initializable {
             // add delete button to hbox (red x)
             Button del = new Button("delete");
             del.setTextFill(Color.color(1, 0, 0));
+
+            EventHandler<ActionEvent> delEvent = e -> {
+                // delete the cart item
+            };
+
+            // assign delEvent action to del button
+            del.setOnAction(delEvent);
 
             HBox.setHgrow(quantityLabel, Priority.ALWAYS);
             quantityLabel.setMaxWidth(Double.MAX_VALUE);
