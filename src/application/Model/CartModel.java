@@ -23,7 +23,7 @@ public class CartModel {
      * @param quantity  - the quantity being added to the cart
      * @throws SQLException
      */
-    public void addToCart(int custId, int productId, int quantity) throws SQLException {
+    public static void addToCart(int custId, int productId, int quantity) throws SQLException {
         PreparedStatement preparedStatement = conn.prepareStatement(
                 "INSERT INTO cartItems" +
                         "(custID, productID, quantity)" +
@@ -32,7 +32,7 @@ public class CartModel {
         preparedStatement.setInt(2, productId);
         preparedStatement.setInt(3, quantity);
         preparedStatement.executeUpdate();
-        }
+    }
 
 
     /**
@@ -42,7 +42,7 @@ public class CartModel {
      * @param cartId    - the cart item to be deleted
      * @throws SQLException
      */
-    public void removeFromCart(int cartId) throws SQLException {
+    public static void removeFromCart(int cartId) throws SQLException {
         PreparedStatement preparedStatement = conn.prepareStatement(
                 "DELETE FROM cartItems "+
                         "WHERE id = ? ");
@@ -77,8 +77,8 @@ public class CartModel {
      * @param custId    - the customer the cart items are associated with
      * @throws SQLException
      */
-    public ArrayList<Integer> getCart(int custId) throws SQLException {
-        ArrayList<Integer> cartList = new ArrayList<Integer>();
+    public static ArrayList<Integer> getCart(int custId) throws SQLException {
+        ArrayList<Integer> cartList = new ArrayList<>();
 
         // fill list with cart item ids
         PreparedStatement preparedStatement = conn.prepareStatement(
@@ -101,7 +101,7 @@ public class CartModel {
      * @return          - the product id associated with the cartId, -1 if error
      * @throws SQLException
      */
-    public int getProduct(int cartId) throws SQLException {
+    public static int getProduct(int cartId) throws SQLException {
     PreparedStatement preparedStatement = conn.prepareStatement(
         "SELECT productId FROM cartItems "+
             "WHERE id = ?");
@@ -166,17 +166,31 @@ public class CartModel {
      * @return
      * @throws SQLException
      */
-    public double getItemsPrice(int cartId) throws SQLException {
-        ProductModel pm = new ProductModel();
+    public static int getItemsPrice(int cartId) throws SQLException {
         int pid = getProduct(cartId);
-        double singularPrice = pm.getPrice(pid);
+        int singularPrice = ProductModel.getPrice(pid);
         int quantity = getQuantity(cartId);
         return (singularPrice * quantity);
     }
 
+    /**
+     * getItemsPriceAsString
+     * gets the total price for a particular cart item as a String
+     *
+     * @param cartId
+     * @return
+     * @throws SQLException
+     */
+    public static String getItemsPriceAsString(int cartId) throws SQLException {
+        int pid = getProduct(cartId);
+        int singularPrice = ProductModel.getPrice(pid);
+        int total = getQuantity(cartId) * singularPrice;
+        return (String.format("$%d.%02d", (total / 100), (total % 100)));
+    }
 
-    public double getCartTotal(int custId) throws SQLException {
-        double total = 0;
+
+    public static int getCartTotal(int custId) throws SQLException {
+        int total = 0;
         PreparedStatement preparedStatement = conn.prepareStatement(
             "SELECT id FROM cartItems "+
                 "WHERE custId = ?");
@@ -187,6 +201,20 @@ public class CartModel {
             total += getItemsPrice(cid);
         }
         return total;
+    }
+
+    public static String getCartTotalAsString(int custId) throws SQLException {
+        int total = 0;
+        PreparedStatement preparedStatement = conn.prepareStatement(
+                "SELECT id FROM cartItems "+
+                        "WHERE custId = ?");
+        preparedStatement.setInt(1, custId);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        while (resultSet.next()) {
+            int cid = resultSet.getInt("id");
+            total += getItemsPrice(cid);
+        }
+        return (String.format("$%d.%02d", (total / 100), (total % 100)));
     }
 
 }

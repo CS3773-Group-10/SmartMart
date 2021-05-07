@@ -36,7 +36,6 @@ public class CategoryListController implements Initializable {
     @FXML private ImageView orderImageView;
     @FXML private ImageView accountImageView;
     @FXML private ImageView logoImageView;
-    @FXML private Label userLabel;
 
     private int userId;
 
@@ -91,7 +90,7 @@ public class CategoryListController implements Initializable {
         logoImageView.setImage(logoImage);
     }
 
-    //display the user Id on screen
+    //record the user Id
     public void setUserId(int id) {
         this.userId = id;
     }
@@ -125,8 +124,6 @@ public class CategoryListController implements Initializable {
 
     public void goToAccount(MouseEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader();
-
-        //content root is set to src, this may not work if content root set to something else
         loader.setLocation(getClass().getResource("/application/View/account.fxml"));
         loader.load();
 
@@ -142,14 +139,12 @@ public class CategoryListController implements Initializable {
             window.show();
         }
         catch (Exception e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
     }
 
     public void goToCart(MouseEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader();
-
-        //content root is set to src, this may not work if content root set to something else
         loader.setLocation(getClass().getResource("/application/View/cart.fxml"));
         loader.load();
 
@@ -165,7 +160,7 @@ public class CategoryListController implements Initializable {
             window.show();
         }
         catch (Exception e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
     }
 }

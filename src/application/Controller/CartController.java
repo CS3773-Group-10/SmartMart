@@ -16,9 +16,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
-import org.w3c.dom.Text;
 
 import java.awt.event.ActionEvent;
 import java.io.File;
@@ -27,8 +25,6 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-
-import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
 
 public class CartController implements Initializable {
 
@@ -78,12 +74,10 @@ public class CartController implements Initializable {
 
     public void populateCart(int userId) throws SQLException {
         // get cart for the user (list)
-        CartModel cm = new CartModel();
-        ProductModel pm = new ProductModel();
-        ArrayList<Integer> cart = cm.getCart(userId);
+        ArrayList<Integer> cart = CartModel.getCart(userId);
 
         for (Integer cartId : cart) { // for each item in the cart, create an hbox
-            int productId = cm.getProduct(cartId);
+            int productId = CartModel.getProduct(cartId);
             HBox hbox = new HBox(10);
 
             // add photo to hbox
@@ -92,29 +86,29 @@ public class CartController implements Initializable {
             ImageView productImgView = new ImageView(productImg);
 
             // add product name
-            String name = pm.getName(productId);
+            String name = ProductModel.getName(productId);
             Label nameLabel = new Label(name);
 
             // add quantity to hbox
-            int quantity = cm.getQuantity(cartId);
-            Label quantitylabel = new Label("x" + quantity);
+            int quantity = CartModel.getQuantity(cartId);
+            Label quantityLabel = new Label("x" + quantity);
 
             // add price to hbox
-            double price = cm.getItemsPrice(cartId);
-            Label priceLabel = new Label(String.format("$%.2f", price));
+            String price = CartModel.getItemsPriceAsString(cartId);
+            Label priceLabel = new Label(price);
 
             // add delete button to hbox (red x)
             Button del = new Button("delete");
             del.setTextFill(Color.color(1, 0, 0));
 
-            HBox.setHgrow(quantitylabel, Priority.ALWAYS);
-            quantitylabel.setMaxWidth(Double.MAX_VALUE);
-            hbox.getChildren().addAll(productImgView, nameLabel, quantitylabel, priceLabel, del);
+            HBox.setHgrow(quantityLabel, Priority.ALWAYS);
+            quantityLabel.setMaxWidth(Double.MAX_VALUE);
+            hbox.getChildren().addAll(productImgView, nameLabel, quantityLabel, priceLabel, del);
             hbox.setPrefWidth(310);
             cartVbox.getChildren().add(hbox);
         }
-        double total = cm.getCartTotal(userId);
-        totalLbl.setText(String.format("Total: $%.2f", total));
+        String total = CartModel.getCartTotalAsString(userId);
+        totalLbl.setText(total);
     }
 
     @Override
@@ -157,7 +151,7 @@ public class CartController implements Initializable {
         CategoryListController controller = loader.getController();
         controller.setUserId(userId);
 
-        AnchorPane p = (AnchorPane) loader.getRoot();
+        AnchorPane p = loader.getRoot();
         Scene scene = new Scene(p, 360, 640);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(scene);
@@ -183,7 +177,7 @@ public class CartController implements Initializable {
             window.setResizable(false);
             window.show();
         } catch (Exception e) {
-            //exception
+            e.printStackTrace();
         }
     }
 

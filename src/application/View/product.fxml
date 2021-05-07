@@ -5,37 +5,37 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="360.0" style="-fx-background-color: eff9f1;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="360.0" style="-fx-background-color: eff9f1;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
     <children>
-      <ImageView fitHeight="240.0" fitWidth="240.0" layoutX="50.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true" />
-      <Label layoutX="50.0" layoutY="290.0" text="Product Name">
+      <ImageView fx:id="productImageView" fitHeight="240.0" fitWidth="240.0" layoutX="50.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="productNameLabel" layoutX="50.0" layoutY="290.0">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label alignment="CENTER_RIGHT" text="Price" AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="290.0">
+      <Label fx:id="productPriceLabel" alignment="CENTER_RIGHT" AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="290.0">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label layoutX="50.0" layoutY="420.0" text="# left in stock">
+      <Label fx:id="quantityRemainingLabel" layoutX="50.0" layoutY="420.0">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="50.0" layoutY="320.0" prefHeight="60.0" prefWidth="240.0" text="Description that is long and spans multiple lines for testing purposes yay this is so cool" wrapText="true">
+      <Label fx:id="productDescriptionLabel" layoutX="50.0" layoutY="320.0" prefHeight="60.0" prefWidth="240.0" wrapText="true">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Button layoutX="211.0" layoutY="428.0" mnemonicParsing="false" text="Add To Cart" />
-      <Button layoutX="265.0" layoutY="395.0" mnemonicParsing="false" text="+" />
-      <Label layoutX="246.0" layoutY="395.0" text="#">
+      <Button fx:id="addToCartButton" layoutX="211.0" layoutY="428.0" mnemonicParsing="false" onAction="#addToCart" text="Add To Cart" />
+      <Button fx:id="plusButton" layoutX="265.0" layoutY="395.0" mnemonicParsing="false" onAction="#addItem" text="+" />
+      <Label fx:id="quantitySelectedLabel" layoutX="246.0" layoutY="395.0" text="0">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Button layoutX="210.0" layoutY="396.0" mnemonicParsing="false" text="-" />
+      <Button fx:id="minusButton" layoutX="210.0" layoutY="396.0" mnemonicParsing="false" onAction="#subtractItem" text="-" />
         <ButtonBar layoutX="-37.0" layoutY="568.0" prefHeight="72.0" prefWidth="397.0" style="-fx-background-color: white;">
             <buttons>
                 <ImageView fx:id="searchImageView" fitHeight="60.0" fitWidth="60.0" onMouseClicked="#goToCategoryList" pickOnBounds="true" preserveRatio="true" />
