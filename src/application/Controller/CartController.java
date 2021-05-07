@@ -129,6 +129,29 @@ public class CartController implements Initializable {
     }
 
     /**
+     * Clears the cart
+     *
+     * @param event
+     */
+    @FXML
+    void clearCart(ActionEvent event) throws SQLException, IOException {
+        // get cart for the user (list)
+        ArrayList<Integer> cart = CartModel.getCart(userId);
+        CartModel cm = new CartModel();
+
+        for (Integer cartId : cart) { // for each item in the cart, remove
+            try {
+                // delete the cart item from the cart
+                cm.removeFromCart(cartId);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        // reload cart view
+        reload(event);
+    }
+
+    /**
      * reload(event)
      * reloads the cart view
      *

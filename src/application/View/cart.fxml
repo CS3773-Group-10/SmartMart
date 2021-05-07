@@ -29,7 +29,7 @@
                   </ScrollPane>
                   <HBox>
                      <children>
-                        <Button alignment="CENTER_RIGHT" contentDisplay="CENTER" mnemonicParsing="false" styleClass="greyGhostBtn" text="Clear Cart " textAlignment="CENTER" />
+                        <Button alignment="CENTER_RIGHT" contentDisplay="CENTER" mnemonicParsing="false" onAction="#clearCart" styleClass="greyGhostBtn" text="Clear Cart " textAlignment="CENTER" />
                         <Label fx:id="totalLbl" alignment="CENTER_RIGHT" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" text="Total: $0" textAlignment="RIGHT" HBox.hgrow="ALWAYS">
                            <font>
                               <Font size="18.0" />
