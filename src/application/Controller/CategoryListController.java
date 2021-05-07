@@ -36,7 +36,6 @@ public class CategoryListController implements Initializable {
     @FXML private ImageView orderImageView;
     @FXML private ImageView accountImageView;
     @FXML private ImageView logoImageView;
-    @FXML private Label userLabel;
 
     private int userId;
 
@@ -142,7 +141,7 @@ public class CategoryListController implements Initializable {
             window.show();
         }
         catch (Exception e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
     }
 
@@ -165,7 +164,7 @@ public class CategoryListController implements Initializable {
             window.show();
         }
         catch (Exception e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
     }
 }

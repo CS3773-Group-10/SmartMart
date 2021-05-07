@@ -181,7 +181,7 @@ public class CartController implements Initializable {
             window.setResizable(false);
             window.show();
         } catch (Exception e) {
-            //exception
+            e.printStackTrace();
         }
     }
 
