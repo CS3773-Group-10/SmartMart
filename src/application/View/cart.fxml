@@ -34,7 +34,7 @@
                   </ScrollPane>
                   <HBox>
                      <children>
-                        <Button alignment="CENTER_RIGHT" contentDisplay="CENTER" mnemonicParsing="false" styleClass="greyGhostBtn" text="Clear Cart " textAlignment="CENTER">
+                        <Button alignment="CENTER_RIGHT" contentDisplay="CENTER" mnemonicParsing="false" onAction="#clearCart" styleClass="greyGhostBtn" text="Clear Cart " textAlignment="CENTER">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor></Button>
