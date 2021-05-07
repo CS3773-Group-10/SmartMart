@@ -1,5 +1,6 @@
 package application.Controller;
 import application.Model.CartModel;
+import application.Model.Order;
 import application.Model.ProductModel;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -47,11 +48,6 @@ public class CartController implements Initializable {
     /**
      * BUTTON ACTION FUNCTIONS
      */
-
-    @FXML
-    void checkout(ActionEvent event) {
-        // TODO: proceed to checkout
-    }
 
 
     @FXML
@@ -142,8 +138,6 @@ public class CartController implements Initializable {
     @FXML
     private void goToCategoryList(MouseEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader();
-
-        //content root is set to src, this may not work if content root set to something else
         loader.setLocation(getClass().getResource("/application/View/categoryList.fxml"));
         loader.load();
 
@@ -161,8 +155,6 @@ public class CartController implements Initializable {
 
     public void goToAccount(MouseEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader();
-
-        //content root is set to src, this may not work if content root set to something else
         loader.setLocation(getClass().getResource("/application/View/account.fxml"));
         loader.load();
 
@@ -181,4 +173,9 @@ public class CartController implements Initializable {
         }
     }
 
+    public void checkout(javafx.event.ActionEvent actionEvent) throws SQLException{
+       // int isEmpty = CartModel.isEmpty(userId);
+        int orderId = Order.createOrder(userId, 1122233, "Confirmed");
+        CartModel.clearCart(userId);
+    }
 }
