@@ -1,4 +1,6 @@
 package application.Controller;
+import application.Model.CartModel;
+import application.Model.ProductModel;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -10,12 +12,23 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
+import org.w3c.dom.Text;
 
+import java.awt.event.ActionEvent;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
+
+import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
 
 public class CartController implements Initializable {
 
@@ -24,6 +37,10 @@ public class CartController implements Initializable {
     @FXML private ImageView orderImageView;
     @FXML private ImageView accountImageView;
     @FXML private ImageView logoImageView;
+    @FXML private VBox cartVbox;
+
+    @FXML
+    private Label test;
 
 //    @FXML
 //    private Label addbutton;
@@ -32,17 +49,80 @@ public class CartController implements Initializable {
 
 
     private int userId;
+    private double total;
+
+    /**
+     * BUTTON ACTION FUNCTIONS
+     */
+
+    @FXML
+    void checkout(ActionEvent event) {
+        // TODO: proceed to checkout
+    }
+
+
+    @FXML
+    void deleteCartItem(ActionEvent event) {
+        // backburner task, not priority
+    }
+
+    /**
+     * INITALIZATION FUNCTIONS
+     */
 
     public void setUserId(int id) {
         this.userId = id;
+        try {
+            populateCart(id); // populate cart using users id
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void populateCart(int userId) throws SQLException {
+        // get cart for the user (list)
+        CartModel cm = new CartModel();
+        ProductModel pm = new ProductModel();
+        ArrayList<Integer> cart = cm.getCart(userId);
+
+        for (Integer cartId : cart) { // for each item in the cart, create an hbox
+            int productId = cm.getProduct(cartId);
+            HBox hbox = new HBox(10);
+
+            // add photo to hbox
+            File productImgFile= new File("images/product-images/product-"+productId+".png");
+            Image productImg = new Image(productImgFile.toURI().toString());
+            ImageView productImgView = new ImageView(productImg);
+
+            // add product name
+            String name = pm.getName(productId);
+            Label nameLabel = new Label(name);
+
+            // add quantity to hbox
+            int quantity = cm.getQuantity(cartId);
+            Label quantitylabel = new Label("x" + quantity);
+
+            // add price to hbox
+            double price = cm.getItemsPrice(cartId);
+            Label priceLabel = new Label(String.format("$%.2f", price));
+
+            // add delete button to hbox (red x)
+            Button del = new Button("delete");
+            del.setTextFill(Color.color(1, 0, 0));
+
+            HBox.setHgrow(quantitylabel, Priority.ALWAYS);
+            quantitylabel.setMaxWidth(Double.MAX_VALUE);
+            hbox.getChildren().addAll(productImgView, nameLabel, quantitylabel, priceLabel, del);
+            hbox.setPrefWidth(310);
+            cartVbox.getChildren().add(hbox);
+        }
+
+        // set label to total $: String.format("Total: $%.2f", total)
+
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        // initialize cart items into view
-        
-
-
         // initialize images
         File searchFile = new File("images/searchIcon.png");
         Image searchImage = new Image(searchFile.toURI().toString());

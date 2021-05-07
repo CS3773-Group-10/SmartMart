@@ -12,11 +12,21 @@
   <center>
     <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
       <children>
-            <VBox alignment="TOP_CENTER" layoutX="3.0" layoutY="62.0" prefHeight="453.0" prefWidth="353.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <VBox alignment="TOP_CENTER" layoutX="3.0" layoutY="62.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-              <Button mnemonicParsing="false" text="Remove Cart Item" />
-              <Button fx:id="buttonAddToCart" mnemonicParsing="false" text="Add to Cart" />
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+                  <ScrollPane fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" stylesheets="@styles.css" VBox.vgrow="ALWAYS">
+                    <content>
+                      <AnchorPane maxWidth="1.7976931348623157E308">
+                           <children>
+                              <VBox fx:id="cartVbox" alignment="TOP_CENTER" maxWidth="1.7976931348623157E308" prefHeight="100.0" spacing="15.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                                 <padding>
+                                    <Insets left="25.0" right="25.0" />
+                                 </padding>
+                              </VBox>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </ScrollPane>
                   <HBox>
                      <children>
                         <Button alignment="CENTER_RIGHT" contentDisplay="CENTER" mnemonicParsing="false" text="Clear Cart " textAlignment="CENTER" />

@@ -212,6 +212,20 @@ public class ProductModel {
         else return null;
     }
 
+
+    public double getPrice(int id) throws SQLException {
+        PreparedStatement preparedStatement = conn.prepareStatement(
+            "SELECT price FROM products"+
+                " WHERE id=?");
+        preparedStatement.setInt(1, id);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        if (resultSet.next()) {
+            return (resultSet.getInt("price")/100.00);
+        }
+        else return -1;
+    }
+
+
     /**
      * getImage(id)
      * gets the display image of the product at the provided id
