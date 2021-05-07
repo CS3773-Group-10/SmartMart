@@ -8,7 +8,7 @@
 <?import javafx.scene.text.*?>
 <?import javafx.scene.image.ImageView?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="360.0" style="-fx-background-color: eff9f1;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller.CartController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="360.0" style="-fx-background-color: eff9f1;" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller.CartController">
   <center>
     <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
       <children>
@@ -29,8 +29,8 @@
                   </ScrollPane>
                   <HBox>
                      <children>
-                        <Button alignment="CENTER_RIGHT" contentDisplay="CENTER" mnemonicParsing="false" text="Clear Cart " textAlignment="CENTER" />
-                        <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" text="Total: $0" textAlignment="RIGHT" HBox.hgrow="ALWAYS">
+                        <Button alignment="CENTER_RIGHT" contentDisplay="CENTER" mnemonicParsing="false" styleClass="greyGhostBtn" text="Clear Cart " textAlignment="CENTER" />
+                        <Label fx:id="totalLbl" alignment="CENTER_RIGHT" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" text="Total: $0" textAlignment="RIGHT" HBox.hgrow="ALWAYS">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -43,7 +43,7 @@
                         <Insets left="25.0" right="25.0" top="25.0" />
                      </VBox.margin>
                   </HBox>
-                  <Button alignment="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Checkout →">
+                  <Button alignment="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="redBtn" text="Checkout →">
                      <VBox.margin>
                         <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
                      </VBox.margin>
