@@ -3,11 +3,13 @@ import application.Controller.CartController;
 
 import application.Main;
 
+import javax.xml.transform.Result;
 import java.sql.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 public class CartModel {
     private static Connection conn = Main.conn;
@@ -42,7 +44,7 @@ public class CartModel {
      */
     public void removeFromCart(int cartId) throws SQLException {
         PreparedStatement preparedStatement = conn.prepareStatement(
-                "DELETE FROM cartItems"+
+                "DELETE FROM cartItems "+
                         "WHERE id = ? ");
         preparedStatement.setInt(1, cartId);
         preparedStatement.executeUpdate();
@@ -61,7 +63,7 @@ public class CartModel {
      */
     public void clearCart(int custId) throws SQLException {
         PreparedStatement preparedStatement = conn.prepareStatement(
-                "DELETE FROM cartItems"+
+                "DELETE FROM cartItems "+
                         "WHERE custId = ?");
         preparedStatement.setInt(1, custId);
         preparedStatement.executeUpdate();
@@ -75,26 +77,17 @@ public class CartModel {
      * @param custId    - the customer the cart items are associated with
      * @throws SQLException
      */
-    public int[] getCart(int custId) throws SQLException {
-        // create array size of num cart items
+    public ArrayList<Integer> getCart(int custId) throws SQLException {
+        ArrayList<Integer> cartList = new ArrayList<Integer>();
+
+        // fill list with cart item ids
         PreparedStatement preparedStatement = conn.prepareStatement(
-            "SELECT count(*) FROM cartItems"+
+            "SELECT id FROM cartItems "+
                 "WHERE custId = ?");
         preparedStatement.setInt(1, custId);
         ResultSet resultSet = preparedStatement.executeQuery();
-        int cartSize = resultSet.getInt("count");
-        int[] cartList = new int[cartSize];
-
-        // fill list with cart item ids
-        preparedStatement = conn.prepareStatement(
-            "SELECT id FROM cartItems"+
-                "WHERE custId = ?");
-
-        resultSet = preparedStatement.executeQuery();
-        int i = 0;
         while (resultSet.next()) {
-            cartList[i] = resultSet.getInt("id");
-            i++;
+            cartList.add(resultSet.getInt("id"));
         }
         return cartList;
     }
@@ -110,7 +103,7 @@ public class CartModel {
      */
     public int getProduct(int cartId) throws SQLException {
     PreparedStatement preparedStatement = conn.prepareStatement(
-        "SELECT productId FROM cartItems"+
+        "SELECT productId FROM cartItems "+
             "WHERE id = ?");
         preparedStatement.setInt(1, cartId);
         ResultSet resultSet = preparedStatement.executeQuery();
@@ -133,8 +126,8 @@ public class CartModel {
      */
     public static int getQuantity(int cartId) throws SQLException {
         PreparedStatement preparedStatement = conn.prepareStatement(
-                "SELECT quantity FROM products"+
-                        " WHERE cartId=?");
+                "SELECT quantity FROM cartItems "+
+                        " WHERE id=?");
         preparedStatement.setInt(1, cartId);
         ResultSet resultSet = preparedStatement.executeQuery();
         if (resultSet.next()) {
@@ -156,12 +149,44 @@ public class CartModel {
      */
     public static void setQuantity(int cartId, int quantity) throws SQLException {
         PreparedStatement preparedStatement = conn.prepareStatement(
-                "UPDATE products"+
-                        "SET quantity=?"+
-                        " WHERE id=?");
+                "UPDATE products "+
+                        "SET quantity=? "+
+                        "WHERE id=?");
         preparedStatement.setInt(1, quantity);
         preparedStatement.setInt(2, cartId);
         preparedStatement.executeUpdate();
+    }
+
+
+    /**
+     * getItemsPrice
+     * gets the total price for a particular cart item
+     *
+     * @param cartId
+     * @return
+     * @throws SQLException
+     */
+    public double getItemsPrice(int cartId) throws SQLException {
+        ProductModel pm = new ProductModel();
+        int pid = getProduct(cartId);
+        double singularPrice = pm.getPrice(pid);
+        int quantity = getQuantity(cartId);
+        return (singularPrice * quantity);
+    }
+
+
+    public double getCartTotal(int custId) throws SQLException {
+        int total = 0;
+        PreparedStatement preparedStatement = conn.prepareStatement(
+            "SELECT cartId FROM cartItems "+
+                "WHERE custId = ?");
+        preparedStatement.setInt(1, custId);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        while (resultSet.next()) {
+            int cid = resultSet.getInt("cartId");
+            total += getItemsPrice(cid);
+        }
+        return total;
     }
 
 }
