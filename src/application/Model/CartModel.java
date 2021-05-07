@@ -120,8 +120,7 @@ public class CartModel {
      * gets the quantity added to cart at cartId
      *
      * @param cartId    the id of the product to query
-     * @return      the quantity of the product as an int,
-     *              returns -1 if query fails
+     * @return      the quantity of the product as an int
      * @throws SQLException
      */
     public static int getQuantity(int cartId) throws SQLException {
@@ -130,10 +129,7 @@ public class CartModel {
                         " WHERE id=?");
         preparedStatement.setInt(1, cartId);
         ResultSet resultSet = preparedStatement.executeQuery();
-        if (resultSet.next()) {
-            return resultSet.getInt("quantity");
-        }
-        else return -1;
+        return resultSet.getInt("quantity");
     }
 
 
@@ -149,8 +145,8 @@ public class CartModel {
      */
     public static void setQuantity(int cartId, int quantity) throws SQLException {
         PreparedStatement preparedStatement = conn.prepareStatement(
-                "UPDATE products "+
-                        "SET quantity=? "+
+                "UPDATE cartItems "+
+                        "SET quantity = ? "+
                         "WHERE id=?");
         preparedStatement.setInt(1, quantity);
         preparedStatement.setInt(2, cartId);

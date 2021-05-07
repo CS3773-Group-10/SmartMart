@@ -1,6 +1,7 @@
 package application.Controller;
 import application.Model.CartModel;
 import application.Model.Order;
+import application.Model.Product;
 import application.Model.ProductModel;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -100,6 +101,12 @@ public class CartController implements Initializable {
 
             EventHandler<ActionEvent> delEvent = e -> {
                 try {
+                    // add quantity in cart back to inventory stock quantity
+                    int cartQuantity = cm.getQuantity(cartId);
+                    int oldStockQuantity = ProductModel.getQuantity(productId);
+                    int newStockQty = oldStockQuantity + cartQuantity;
+                    ProductModel.setQuantity(productId, newStockQty);
+
                     // delete the cart item from the cart
                     cm.removeFromCart(cartId);
 
@@ -137,8 +144,17 @@ public class CartController implements Initializable {
 
         for (Integer cartId : cart) { // for each item in the cart, remove
             try {
+                int productId = CartModel.getProduct(cartId);
+
+                // add quantity in cart back to inventory stock quantity
+                int cartQuantity = cm.getQuantity(cartId);
+                int oldStockQuantity = ProductModel.getQuantity(productId);
+                int newStockQty = oldStockQuantity + cartQuantity;
+                ProductModel.setQuantity(productId, newStockQty);
+
                 // delete the cart item from the cart
                 cm.removeFromCart(cartId);
+
             } catch (SQLException e) {
                 e.printStackTrace();
             }
