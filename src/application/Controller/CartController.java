@@ -84,8 +84,10 @@ public class CartController implements Initializable {
             File productImgFile= new File("images/product-images/product-"+productId+".png");
             Image productImg = new Image(productImgFile.toURI().toString());
             ImageView productImgView = new ImageView(productImg);
-
-            // add product name
+            productImgView.setX(20);
+            productImgView.setY(20);  // add product name
+            productImgView.setFitWidth(40);
+            productImgView.setPreserveRatio(true);
             String name = ProductModel.getName(productId);
             Label nameLabel = new Label(name);
 
