@@ -51,7 +51,7 @@ public class ProductController implements Initializable {
     }
 
     private void backToProductList(ActionEvent event) {
-        ProductListController controller = new ProductListController(product.getCategory());
+        ProductListController controller = new ProductListController(product.getCategory(), userId);
 
         FXMLLoader loader = new FXMLLoader(Main.class.getResource("View/productList.fxml"));
         loader.setController(controller);
@@ -68,7 +68,7 @@ public class ProductController implements Initializable {
         window.setScene(scene);
         window.setResizable(false);
         window.show();
-        controller.start(pane, userId);
+        controller.start(pane);
     }
 
 }
