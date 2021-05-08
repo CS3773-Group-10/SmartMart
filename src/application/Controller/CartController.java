@@ -259,30 +259,24 @@ public class CartController implements Initializable {
     }
 
     @FXML
-    public void checkout(javafx.event.ActionEvent actionEvent) throws IOException{
+    public void checkout(ActionEvent event)  throws IOException{
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/application/View/checkout.fxml"));
+        loader.load();
+
+        //get the controller that the fxml is linked to and update the userId
+        CheckoutController controller = loader.getController();
         try {
-            int orderId = Order.createOrder(userId, 1122233, "Confirmed");
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/application/View/checkout.fxml"));
-            loader.load();
-            //get the controller that the fxml is linked to and update the userId
-            CheckoutController controller = loader.getController();
-
-            try {
-                //loader.load();
-                controller.setId(userId, orderId);
-                AnchorPane p = loader.getRoot();
-                Scene scene = new Scene(p, 360, 640);
-                Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-                window.setScene(scene);
-                window.setResizable(false);
-                window.show();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            controller.setId(userId);
+            Pane p = loader.getRoot();
+            Scene scene = new Scene(p, 360, 640);
+            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            window.setScene(scene);
+            window.setResizable(false);
+            window.show();
         }
-        catch (SQLException e) {
-
+        catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }
