@@ -42,7 +42,6 @@ public class ProductListController implements Initializable {
 
     private int userId;
 
-    @FXML private Button backToCategoryListButton;
     @FXML private ImageView searchImageView;
     @FXML private ImageView cartImageView;
     @FXML private ImageView orderImageView;
@@ -91,8 +90,6 @@ public class ProductListController implements Initializable {
     public void start(AnchorPane mainPane) {
         this.mainPane = mainPane;
 
-        backToCategoryListButton.setOnAction(actionEvent -> backToCategoryList(actionEvent));
-
         AnchorPane.setTopAnchor(header,15.0);
         AnchorPane.setLeftAnchor(header, 40.0);
         mainPane.getChildren().add(header);
@@ -106,31 +103,9 @@ public class ProductListController implements Initializable {
             productPaneList[i] = product.getPane();
             AnchorPane.setTopAnchor(productPaneList[i], 100.0 + (160*(i / 2)));
             AnchorPane.setLeftAnchor(productPaneList[i], 40.0 + (160*(i % 2)));
-            productPaneList[i].setOnMouseClicked(actionEvent -> openProduct(actionEvent));
+            productPaneList[i].setOnMouseClicked(this::openProduct);
             mainPane.getChildren().add(productPaneList[i]);
         }
-    }
-
-    @FXML
-    private void backToCategoryList(ActionEvent event) {
-        FXMLLoader loader = new FXMLLoader();
-
-        loader.setLocation(getClass().getResource("/application/View/categoryList.fxml"));
-        try {
-            loader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        CategoryListController controller = loader.getController();
-        controller.setUserId(userId);
-
-        AnchorPane p = loader.getRoot();
-        Scene scene = new Scene(p, 360, 640);
-        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        window.setScene(scene);
-        window.setResizable(false);
-        window.show();
     }
 
     private void openProduct(MouseEvent event) {
@@ -162,10 +137,31 @@ public class ProductListController implements Initializable {
     }
 
     @FXML
+    private void goToCategoryList(MouseEvent event) {
+        FXMLLoader loader = new FXMLLoader();
+
+        loader.setLocation(getClass().getResource("/application/View/categoryList.fxml"));
+        try {
+            loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        CategoryListController controller = loader.getController();
+        controller.setUserId(userId);
+
+        AnchorPane p = loader.getRoot();
+        Scene scene = new Scene(p, 360, 640);
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(scene);
+        window.setResizable(false);
+        window.show();
+    }
+
+    @FXML
     public void goToAccount(MouseEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader();
 
-        //content root is set to src, this may not work if content root set to something else
         loader.setLocation(getClass().getResource("/application/View/account.fxml"));
         loader.load();
 
@@ -173,15 +169,15 @@ public class ProductListController implements Initializable {
         AccountController controller = loader.getController();
         try {
             controller.setUserId(userId);
-            AnchorPane p = (AnchorPane) loader.getRoot();
+            AnchorPane p = loader.getRoot();
             Scene scene = new Scene(p, 360, 640);
             Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
             window.setScene(scene);
             window.setResizable(false);
             window.show();
         }
-        catch (Exception e) {
-            //exception
+        catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 
