@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="360.0" style="-fx-background-color: eff9f1;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller.OrdersController">
@@ -17,10 +19,14 @@
             <ImageView fx:id="cartImageView" fitHeight="60.0" fitWidth="60.0" onMouseClicked="#goToCart" pickOnBounds="true" preserveRatio="true" />
          </buttons>
       </ButtonBar>
-      <Label layoutX="118.0" layoutY="68.0" text="Orders">
+      <Label layoutX="46.0" layoutY="51.0" text="Orders">
          <font>
-            <Font name="Kristen ITC" size="36.0" />
+            <Font name="Comic Sans MS" size="36.0" />
          </font>
       </Label>
+      <VBox fx:id="vbox" layoutX="118.0" layoutY="202.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-font-size: 18;" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="125.0">
+         <padding>
+            <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+         </padding></VBox>
    </children>
 </AnchorPane>

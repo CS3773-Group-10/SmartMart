@@ -137,4 +137,28 @@ public class Order {
         }
         return "N/A";
     }
+
+    /**
+     * getOrders
+     * get all orders associated with user
+     *
+     * @param userId
+     * @return
+     * @throws SQLException
+     */
+    public static ArrayList<Integer> getOrders(int userId) throws SQLException {
+        ArrayList<Integer> orderItemList = new ArrayList<>();
+
+        // fill list with cart item ids
+        PreparedStatement preparedStatement = conn.prepareStatement(
+            "SELECT id FROM orders "+
+                "WHERE custID = ?");
+        preparedStatement.setInt(1, userId);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        while (resultSet.next()) {
+            orderItemList.add(resultSet.getInt("id"));
+        }
+        return orderItemList;
+    }
+
 }
