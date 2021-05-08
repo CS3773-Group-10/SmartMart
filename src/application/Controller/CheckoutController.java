@@ -68,7 +68,7 @@ public class CheckoutController implements Initializable {
             errorMsg.setText("Fields left blank. Please enter both an address and card number.");
         } else {
             // place the order
-            int cardNum = Integer.valueOf(cardNumLine.getText());
+            int cardNum = Integer.parseInt(cardNumLine.getText());;
             int orderId = Order.createOrder(this.userId, cardNum, "Pending Order");
 
             // add carts as order items and clear

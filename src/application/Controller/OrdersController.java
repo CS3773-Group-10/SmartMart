@@ -10,6 +10,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -84,6 +85,27 @@ public class OrdersController implements Initializable {
         window.setScene(scene);
         window.setResizable(false);
         window.show();
+    }
+
+    @FXML
+    public void goToCart(MouseEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/application/View/cart.fxml"));
+        loader.load();
+
+        CartController controller = loader.getController();
+        try {
+            controller.setUserId(userId);
+            Pane p = loader.getRoot();
+            Scene scene = new Scene(p, 360, 640);
+            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            window.setScene(scene);
+            window.setResizable(false);
+            window.show();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void goToAccount(MouseEvent event) throws IOException {

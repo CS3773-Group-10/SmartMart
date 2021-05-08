@@ -1,14 +1,11 @@
 package application.Model;
-import application.Controller.CartController;
 
 import application.Main;
 
-import javax.xml.transform.Result;
 import java.sql.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 
 public class CartModel {
@@ -213,15 +210,17 @@ public class CartModel {
         return (String.format("$%d.%02d", (total / 100), (total % 100)));
     }
 
-    public static int isEmpty(int userId) throws SQLException{
+    public static boolean isEmpty(int userId) throws SQLException{
         PreparedStatement preparedStatement = conn.prepareStatement(
-                "SELECT COUNT(custID) FROM cartItems "+
-                        "WHERE id = ?");
+                "SELECT count(*) FROM cartItems "+
+                        "WHERE custId = ?");
         preparedStatement.setInt(1, userId);
         ResultSet resultSet = preparedStatement.executeQuery();
         if (resultSet.next()) {
-            return resultSet.getInt(1);
+            if (resultSet.getInt("count(*)") > 0){
+                return false;
+            }
         }
-        else return -1;
+        return true;
     }
 }

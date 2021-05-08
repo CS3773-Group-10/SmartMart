@@ -259,24 +259,27 @@ public class CartController implements Initializable {
     }
 
     @FXML
-    public void checkout(ActionEvent event)  throws IOException{
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/application/View/checkout.fxml"));
-        loader.load();
+    public void checkout(ActionEvent event) throws IOException, SQLException {
+        if (!CartModel.isEmpty(userId)) {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/application/View/checkout.fxml"));
+            loader.load();
 
-        //get the controller that the fxml is linked to and update the userId
-        CheckoutController controller = loader.getController();
-        try {
-            controller.setId(userId);
-            Pane p = loader.getRoot();
-            Scene scene = new Scene(p, 360, 640);
-            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            window.setScene(scene);
-            window.setResizable(false);
-            window.show();
+            //get the controller that the fxml is linked to and update the userId
+            CheckoutController controller = loader.getController();
+            try {
+                controller.setId(userId);
+                Pane p = loader.getRoot();
+                Scene scene = new Scene(p, 360, 640);
+                Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                window.setScene(scene);
+                window.setResizable(false);
+                window.show();
+            }
+            catch (Exception e) {
+                e.printStackTrace();
+            }
         }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
+
     }
 }
