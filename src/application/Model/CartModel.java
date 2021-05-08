@@ -71,7 +71,7 @@ public class CartModel {
     /**
      * getCart(custId)
      * returns list of cart ids associated with custID
-     * using the SQL Select 
+     * using the SQL Select
      *
      * @param custId    - the customer the cart items are associated with
      * @throws SQLException
