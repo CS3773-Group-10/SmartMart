@@ -159,16 +159,19 @@ public class CheckoutController implements Initializable {
         loader.setLocation(getClass().getResource("/application/View/orders.fxml"));
         loader.load();
 
-        //get the controller that the fxml is linked to and update the userId
         OrdersController controller = loader.getController();
-        controller.setUserId(userId);
-
-        AnchorPane p = loader.getRoot();
-        Scene scene = new Scene(p, 360, 640);
-        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        window.setScene(scene);
-        window.setResizable(false);
-        window.show();
+        try {
+            controller.setUserId(userId);
+            Pane p = loader.getRoot();
+            Scene scene = new Scene(p, 360, 640);
+            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            window.setScene(scene);
+            window.setResizable(false);
+            window.show();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -177,16 +180,19 @@ public class CheckoutController implements Initializable {
         loader.setLocation(getClass().getResource("/application/View/orders.fxml"));
         loader.load();
 
-        //get the controller that the fxml is linked to and update the userId
         OrdersController controller = loader.getController();
-        controller.setUserId(userId);
-
-        AnchorPane p = loader.getRoot();
-        Scene scene = new Scene(p, 360, 640);
-        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        window.setScene(scene);
-        window.setResizable(false);
-        window.show();
+        try {
+            controller.setUserId(userId);
+            Pane p = loader.getRoot();
+            Scene scene = new Scene(p, 360, 640);
+            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            window.setScene(scene);
+            window.setResizable(false);
+            window.show();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
