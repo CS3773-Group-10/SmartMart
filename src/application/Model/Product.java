@@ -8,6 +8,16 @@ import javafx.scene.layout.BorderPane;
 import java.sql.Date;
 import java.sql.SQLException;
 
+/**
+ * Class Product
+ *
+ *
+ * public
+ *
+ */
+
+
+
 public class Product {
 
     private int id;
@@ -18,6 +28,13 @@ public class Product {
     private Date date;
     private Image image;
 
+    /**
+     * public Product
+     *
+     * using SQLException
+     *
+     * @param id (int)
+     */
     public Product(int id) {
         this.id = id;
         try {
@@ -33,6 +50,18 @@ public class Product {
         }
     }
 
+    /**
+     *
+     * Public Prodcut
+     *
+     * @param id
+     * @param name
+     * @param description
+     * @param category
+     * @param quantity
+     * @param date
+     * @param image
+     */
     public Product(int id, String name, String description, String category, int quantity, Date date, Image image) {
         this.id = id;
         this.name = name;
@@ -43,6 +72,13 @@ public class Product {
         this.image = image;
     }
 
+    /**
+     *
+     * public void update
+     *
+     * void- no returns
+     *
+     */
     public void update() {
         try {
             name = ProductModel.getName(id);
