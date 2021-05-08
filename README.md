@@ -1,5 +1,5 @@
 # SmartMart User's Guide
-CS3773 Software Engineering project - mobile grocery / delivery store java app
+CS3773 Software Engineering project - mobile grocery / delivery store java app  
 By Group 10 - Bryan Allaire, Vanessa Gerber, Raquel Chu, Brynna Watring, Corey Ramsdell
 
 
