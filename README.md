@@ -6,7 +6,7 @@ By Group 10 - Bryan Allaire, Vanessa Gerber, Raquel Chu, Brynna Watring, Corey R
 ## Introduction
 You will be introduced to the login page, where you can enter your username email and password to sign in. There is also an option to create an account, where you enter all the information from the user and create a new account. Under the registration page, there is an option to go back to the login page. After you sign in or create a new account, the screen will display the different categories of products to browse that the app offers.
 
-![intro-screenshot](#)
+![intro-screenshot](https://github.com/CS3773-Group-10/SmartMart/blob/master/snippets/loginInterface.PNG)
 
 
 ## Navigation Bar
