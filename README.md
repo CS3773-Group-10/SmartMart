@@ -3,14 +3,14 @@ CS3773 Software Engineering project - mobile grocery / delivery store java app
 By Group 10 - Bryan Allaire, Vanessa Gerber, Raquel Chu, Brynna Watring, Corey Ramsdell
 
 ## Dependencies (Downloads)
-Java SE Development Kit 14.0.2:
-https://www.oracle.com/java/technologies/javase/jdk14-archive-downloads.html
-Java FX SDK (v. 11.0.2)
-https://gluonhq.com/products/javafx
-sqlite jdbc 3.34.0 driver
-https://github.com/xerial/sqlite-jdbc/releases
-GitHub repo
-https://github.com/CS3773-Group-10/SmartMart
+Java SE Development Kit 14.0.2:  
+https://www.oracle.com/java/technologies/javase/jdk14-archive-downloads.html  
+Java FX SDK (v. 11.0.2)  
+https://gluonhq.com/products/javafx  
+sqlite jdbc 3.34.0 driver  
+https://github.com/xerial/sqlite-jdbc/releases  
+GitHub repo  
+https://github.com/CS3773-Group-10/SmartMart  
 
 
 ## Introduction
