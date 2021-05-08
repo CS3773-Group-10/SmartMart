@@ -1,14 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="application.Controller.OrdersController"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="360.0" style="-fx-background-color: eff9f1;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ButtonBar layoutX="-37.0" layoutY="568.0" prefHeight="72.0" prefWidth="397.0" style="-fx-background-color: white;">
+         <buttons>
+            <ImageView fx:id="searchImageView" fitHeight="60.0" fitWidth="60.0" onMouseClicked="#goToCategoryList" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="orderImageView" fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="logoImageView" fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="accountImageView" fitHeight="60.0" fitWidth="60.0" onMouseClicked="#goToAccount" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="cartImageView" fitHeight="60.0" fitWidth="60.0" onMouseClicked="#goToCart" pickOnBounds="true" preserveRatio="true" />
+         </buttons>
+      </ButtonBar>
+      <Label layoutX="118.0" layoutY="68.0" text="Orders">
+         <font>
+            <Font name="Kristen ITC" size="36.0" />
+         </font>
+      </Label>
+   </children>
 </AnchorPane>
