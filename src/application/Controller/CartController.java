@@ -282,4 +282,25 @@ public class CartController implements Initializable {
         }
 
     }
+
+    @FXML
+    public void goToOrders(MouseEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/application/View/orders.fxml"));
+        loader.load();
+
+        OrdersController controller = loader.getController();
+        try {
+            controller.setUserId(userId);
+            Pane p = loader.getRoot();
+            Scene scene = new Scene(p, 360, 640);
+            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            window.setScene(scene);
+            window.setResizable(false);
+            window.show();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
