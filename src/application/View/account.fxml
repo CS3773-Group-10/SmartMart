@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="360.0" style="-fx-background-color: eff9f1;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller.AccountController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="360.0" style="-fx-background-color: eff9f1;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller.AccountController">
    <children>
       <Label layoutX="35.0" layoutY="209.0" prefHeight="23.0" prefWidth="54.0" style="-fx-text-fill: e94649;" text="Name:">
          <font>
@@ -66,7 +66,7 @@
       <ButtonBar layoutX="-37.0" layoutY="568.0" prefHeight="72.0" prefWidth="397.0" style="-fx-background-color: white;">
          <buttons>
             <ImageView fx:id="searchImageView" fitHeight="60.0" fitWidth="60.0" onMouseClicked="#goToCategoryList" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="orderImageView" fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="orderImageView" fitHeight="60.0" fitWidth="60.0" onMouseClicked="#goToOrders" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="logoImageView" fitHeight="60.0" fitWidth="60.0" onMouseClicked="#goToCategoryList" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="accountImageView" fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="cartImageView" fitHeight="60.0" fitWidth="60.0" onMouseClicked="#goToCart" pickOnBounds="true" preserveRatio="true" />
