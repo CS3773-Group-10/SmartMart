@@ -31,23 +31,29 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <Button fx:id="addToCartButton" layoutX="211.0" layoutY="428.0" mnemonicParsing="false" onAction="#addToCart" text="Add To Cart">
+      <Button fx:id="addToCartButton" layoutX="211.0" layoutY="428.0" mnemonicParsing="false" onAction="#addToCart" style="-fx-background-color: e84648;" text="Add To Cart" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-      <Button fx:id="plusButton" layoutX="265.0" layoutY="395.0" mnemonicParsing="false" onAction="#addItem" text="+">
+      <Button fx:id="plusButton" layoutX="265.0" layoutY="396.0" mnemonicParsing="false" onAction="#addItem" style="-fx-background-color: e84648; -fx-background-radius: 20;" text="+" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="HAND" />
-         </cursor></Button>
+         </cursor>
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
       <Label fx:id="quantitySelectedLabel" layoutX="246.0" layoutY="395.0" text="0">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Button fx:id="minusButton" layoutX="210.0" layoutY="396.0" mnemonicParsing="false" onAction="#subtractItem" text="-">
+      <Button fx:id="minusButton" layoutX="210.0" layoutY="396.0" mnemonicParsing="false" onAction="#subtractItem" prefHeight="25.2" prefWidth="24.8" style="-fx-background-color: e84648; -fx-background-radius: 20;" text="-" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="HAND" />
-         </cursor></Button>
+         </cursor>
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
         <ButtonBar layoutX="-37.0" layoutY="568.0" prefHeight="72.0" prefWidth="397.0" style="-fx-background-color: white;">
             <buttons>
                 <ImageView fx:id="searchImageView" fitHeight="60.0" fitWidth="60.0" onMouseClicked="#goToCategoryList" pickOnBounds="true" preserveRatio="true" />
