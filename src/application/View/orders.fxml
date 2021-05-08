@@ -1,14 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="application.Controller.OrdersController"
-            prefHeight="400.0" prefWidth="600.0">
-
-</AnchorPane>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="360.0" style="-fx-background-color: eff9f1;" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller.CartController">
+  <center>
+    <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <children>
+        <VBox alignment="TOP_CENTER" layoutX="3.0" layoutY="62.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+          <children>
+            <HBox>
+              <VBox.margin>
+                <Insets left="25.0" right="25.0" top="25.0" />
+              </VBox.margin>
+            </HBox>
+          </children>
+          <padding>
+            <Insets top="25.0" />
+          </padding>
+        </VBox>
+      </children>
+    </AnchorPane>
+  </center>
+  <bottom>
+    <ButtonBar layoutX="-37.0" layoutY="568.0" prefHeight="72.0" prefWidth="397.0" style="-fx-background-color: white;">
+      <buttons>
+        <ImageView fx:id="searchImageView" fitHeight="60.0" fitWidth="60.0" onMouseClicked="#goToCategoryList" pickOnBounds="true" preserveRatio="true" />
+        <ImageView fx:id="orderImageView" fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" />
+        <ImageView fx:id="logoImageView" fitHeight="60.0" fitWidth="60.0" onMouseClicked="#goToCategoryList" pickOnBounds="true" preserveRatio="true" />
+        <ImageView fx:id="accountImageView" fitHeight="60.0" fitWidth="60.0" onMouseClicked="#goToAccount" pickOnBounds="true" preserveRatio="true" />
+        <ImageView fx:id="cartImageView" fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" />
+      </buttons>
+    </ButtonBar>
+  </bottom>
+  <top>
+    <Label fx:id="addbutton" prefHeight="54.0" prefWidth="368.0" text="Orders" textOverrun="CENTER_ELLIPSIS" BorderPane.alignment="CENTER">
+      <font>
+        <Font name="Comic Sans MS" size="40.0" />
+      </font>
+      <BorderPane.margin>
+        <Insets left="25.0" right="25.0" top="25.0" />
+      </BorderPane.margin>
+    </Label>
+  </top>
+</BorderPane>
