@@ -153,6 +153,8 @@ public class ProductModel {
      * getCategory(id)
      * gets the category of the product at the provided id
      *
+     * using SELECT SQL
+     *
      * @param id    the id of the product to query
      * @return      the category of the product as a string,
      *              returns null if query fails
