@@ -181,4 +181,25 @@ public class ProductListController implements Initializable {
         }
     }
 
+    public void goToCart(MouseEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/application/View/cart.fxml"));
+        loader.load();
+
+        //get the controller that the fxml is linked to and update the userId
+        CartController controller = loader.getController();
+        try {
+            controller.setUserId(userId);
+            Pane p = loader.getRoot();
+            Scene scene = new Scene(p, 360, 640);
+            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            window.setScene(scene);
+            window.setResizable(false);
+            window.show();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }
