@@ -32,7 +32,7 @@ After the user is done with selecting all the products they need. They can click
 ## Orders
 After the user submits the order, they can click Orders under the navigation bar. It will display all the orders and their status.
 
-![orders-screenshot](#)
+![orders-screenshot](https://github.com/CS3773-Group-10/SmartMart/blob/master/snippets/orders-img.png)
 
 ## Dependencies (Downloads)
 Java SE Development Kit 14.0.2:
