@@ -12,22 +12,22 @@ You will be introduced to the login page, where you can enter your username emai
 ## Navigation Bar
 There is a handy navigation bar at the bottom of the screen, that when you click (browse, orders, account, cart) will let you access the different pages in the app.
 
-![navbar-screenshot](#)
+![navbar-screenshot](https://github.com/CS3773-Group-10/SmartMart/blob/master/snippets/navigation%20bar.PNG)
 
 ## Browse Select Category
 By selecting one of any of the different categories, it will take you to the list of products from that category. Then you can select one product and add to the cart.
 
-![products-screenshot](#)
+![products-screenshot](https://github.com/CS3773-Group-10/SmartMart/blob/master/snippets/browse%20catgecorg.PNG)
 
 ## Account
 Under the navigation bar you there is an option for orders. Inside the account’s page it will show the user’s information. Where the user can change their information if they need to.
 
-![account-screenshot](#)
+![account-screenshot](https://github.com/CS3773-Group-10/SmartMart/blob/master/snippets/account%20interface.PNG)
 
 ## Cart & Checkout
 After the user is done with selecting all the products they need. They can click on cart and it will display all the products that they want to purchase. There is also a feature Clear Cart where you can clear all the products, and if you only want to delete one product you can use the feature delete. When the user is done, they can go ahead and click on checkout. The checkout will be displayed, they will need to enter their address and card number. Then, after the user enters all the information, they can submit the order by clicking Confirm Order.
 
-![cart-screenshot](#)
+![cart-screenshot](https://github.com/CS3773-Group-10/SmartMart/blob/master/snippets/cart%20and%20checkout.PNG)
 
 ## Orders
 After the user submits the order, they can click Orders under the navigation bar. It will display all the orders and their status.
